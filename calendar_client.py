@@ -3,7 +3,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import os
 import pickle
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
 
@@ -28,17 +28,18 @@ def get_service():
     return service
 
 
-def get_todays_events():
+def get_events_for_day(date, calendar_id="primary"):
     service = get_service()
 
-    now = datetime.now(timezone.utc).isoformat()
+    start = datetime.combine(date, datetime.min.time()).astimezone(timezone.utc)
+    end = start + timedelta(days=1)
 
     events_result = (
         service.events()
         .list(
-            calendarId="primary",
-            timeMin=now,
-            maxResults=20,
+            calendarId=calendar_id,
+            timeMin=start.isoformat(),
+            timeMax=end.isoformat(),
             singleEvents=True,
             orderBy="startTime",
         )

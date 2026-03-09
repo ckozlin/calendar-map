@@ -1,30 +1,56 @@
 import requests
+import os
+import json
+from dotenv import load_dotenv
+import time
+
+load_dotenv()
+
+API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+CACHE_FILE = "geocode_cache.json"
+
+
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE) as f:
+            return json.load(f)
+    return {}
+
+
+def save_cache(cache):
+    with open(CACHE_FILE, "w") as f:
+        json.dump(cache, f, indent=2)
+
+
+cache = load_cache()
+
 
 def geocode(address):
-    url = "https://nominatim.openstreetmap.org/search"
+    if address in cache:
+        print("Using cached coords:", address)
+        return tuple(cache[address])
+
+    url = "https://maps.googleapis.com/maps/api/geocode/json"
 
     params = {
-        "q": address,
-        "format": "json",
-        "limit": 1
+        "address": address,
+        "key": API_KEY,
     }
 
-    headers = {
-        "User-Agent": "calendar-map-script"
-    }
-
-    r = requests.get(url, params=params, headers=headers)
-
-    if r.status_code != 200:
-        print("Geocode failed:", r.status_code, r.text)
-        return None
-
+    print("Geocoding via Google:", address)
+    r = requests.get(url, params=params)
     data = r.json()
+    time.sleep(1)
 
-    if not data:
+    if data["status"] != "OK":
+        print("Geocode failed:", address, data["status"])
         return None
 
-    lat = float(data[0]["lat"])
-    lon = float(data[0]["lon"])
+    location = data["results"][0]["geometry"]["location"]
 
-    return lat, lon
+    coords = (location["lat"], location["lng"])
+
+    cache[address] = coords
+    save_cache(cache)
+
+    return coords

@@ -208,3 +208,5 @@ __marimo__/
 credentials.json
 token.pickle
 calendar_map.html
+calendar_map/
+geocode_cache.json
