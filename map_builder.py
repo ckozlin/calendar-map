@@ -54,8 +54,8 @@ def build_map(events, date_str):
     if len(coords) > 1:
         folium.PolyLine(
             coords,
-            color="red",
-            weight=4,
+            color="blue",
+            weight=3.5,
             dash_array="8,8"
         ).add_to(m)
 
@@ -93,4 +93,4 @@ def build_map(events, date_str):
 
     m.get_root().html.add_child(folium.Element(sidebar))
 
-    m.save(f"calendar_map/calendar_map_{date_str}.html")
+    m.save(f"calendar_map/{date_str}.html")
