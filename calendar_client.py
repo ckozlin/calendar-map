@@ -4,9 +4,9 @@ from google.auth.transport.requests import Request
 import os
 import pickle
 from datetime import datetime, timezone, timedelta
+import pytz
 
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
-
 
 def get_service():
     creds = None
@@ -28,10 +28,10 @@ def get_service():
     return service
 
 
-def get_events_for_day(date, calendar_id="primary"):
+def get_events_for_day(date, calendar_id="primary", timezone="utc"):
     service = get_service()
-
-    start = datetime.combine(date, datetime.min.time()).astimezone(timezone.utc)
+    tz = pytz.timezone(timezone)
+    start = tz.localize(datetime.combine(date, datetime.min.time()))
     end = start + timedelta(days=1)
 
     events_result = (

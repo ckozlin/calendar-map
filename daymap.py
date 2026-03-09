@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default="today")
     parser.add_argument("--calendar", default="primary")
+    parser.add_argument("--timezone", default="utc")
 
     args = parser.parse_args()
 
@@ -29,6 +30,7 @@ def main():
     events = []
 
     for e in raw_events:
+        print(e["summary"], e["start"])
         location = e.get("location")
         start = e["start"].get("dateTime", e["start"].get("date"))
 

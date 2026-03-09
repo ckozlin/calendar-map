@@ -22,7 +22,9 @@ def save_metadata(date, events):
     with open(f"calendar_maps/{date}.json", "w") as f:
         json.dump(data, f, indent=2)
 
+
 def build_map(events, date_str):
+
     if not events:
         print("No events with locations.")
         return
@@ -35,9 +37,12 @@ def build_map(events, date_str):
     m = folium.Map(location=center, zoom_start=12)
 
     coords = []
+    first_seen = {}
 
     for i, e in enumerate(events, start=1):
+
         lat, lon = e["coords"]
+        coord_tuple = (lat, lon)
 
         popup = f"""
         <div style="width:200px">
@@ -70,9 +75,44 @@ def build_map(events, date_str):
             )
         ).add_to(m)
 
+        # Detect repeated location
+        if coord_tuple in first_seen:
+            print(f"Repeat location detected: Stop {first_seen[coord_tuple]+1} and Stop {i}")
+
+            # draw small circle indicator
+            folium.CircleMarker(
+                location=[lat, lon],
+                radius=6,
+                color="red",
+                fill=True,
+                fill_opacity=1
+            ).add_to(m)
+
+            # loop hint line
+            start = coords[first_seen[coord_tuple]]
+            end = [lat, lon]
+
+            print("Loop hint coordinates:", start, "→", end)
+
+            folium.PolyLine(
+                [start, end],
+                color="purple",
+                weight=2,
+                dash_array="2,6"
+            ).add_to(m)
+
+        else:
+            first_seen[coord_tuple] = len(coords)
+
         coords.append([lat, lon])
 
+    # Normal route line
     if len(coords) > 1:
+
+        print("Drawing main route with coordinates:")
+        for c in coords:
+            print(c)
+
         folium.PolyLine(
             coords,
             color="blue",
@@ -117,7 +157,9 @@ def build_map(events, date_str):
         }}
         </script>
         """
+
     m.get_root().html.add_child(folium.Element(sidebar))
 
     m.save(f"calendar_maps/{date_str}.html")
+
     save_metadata(date_str, events)
