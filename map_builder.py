@@ -193,6 +193,15 @@ def build_map(events, date_str):
     {sidebar_items}
     </div>
 
+    <style>
+    /* Hide sidebar on screens narrower than 768px */
+    @media (max-width: 768px) {{
+        #sidebar {{
+            display: none !important;
+        }}
+    }}
+    </style>
+
     <script>
     if (window !== window.parent) {{
         document.getElementById("sidebar").style.display = "none";
