@@ -1,153 +1,139 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <h2>Trip Overview</h2>
+<head>
 
-    <iframe
-      src="calendar_maps/master_map.html"
-      width="100%"
-      height="400"
-      style="border: none; border-radius: 10px"
-    >
-    </iframe>
-    <title>Trip Maps</title>
+<h2>Trip Overview</h2>
 
-    <style>
-      body {
-        font-family: system-ui;
-        max-width: 900px;
-        margin: 40px auto;
-      }
+<iframe src="calendar_maps/master_map.html"
+        width="100%"
+        height="400"
+        style="border:none; border-radius:10px;">
+</iframe>
+<title>Trip Maps</title>
 
-      h1 {
-        margin-bottom: 30px;
-      }
+<style>
 
-      select {
-        font-size: 16px;
-        padding: 8px;
-      }
+body {
+    font-family: system-ui;
+    max-width: 900px;
+    margin: 40px auto;
+}
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
-        margin-top: 30px;
-      }
+h1 {
+    margin-bottom: 30px;
+}
 
-      .card {
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-      }
+select {
+    font-size: 16px;
+    padding: 8px;
+}
 
-      .card a {
-        text-decoration: none;
-        font-weight: bold;
-      }
-    </style>
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
 
-    <script>
-      function goToDate() {
-        const select = document.getElementById("dateSelect");
-        window.location = select.value;
-      }
-    </script>
-  </head>
+.card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
 
-  <body>
-    <h1>Trip Maps</h1>
+.card a {
+    text-decoration: none;
+    font-weight: bold;
+}
 
-    <label>Select day:</label>
+</style>
 
-    <select id="dateSelect" onchange="goToDate()">
-      <option value="">Choose...</option>
-      <option value="2026-05-01.html">2026-05-01</option>
-      <option value="2026-05-02.html">2026-05-02</option>
-      <option value="2026-05-03.html">2026-05-03</option>
-      <option value="2026-05-04.html">2026-05-04</option>
-      <option value="2026-05-05.html">2026-05-05</option>
-    </select>
+<script>
 
-    <div class="grid">
-      <div class="card">
+function goToDate() {
+    const select = document.getElementById("dateSelect");
+    window.location = select.value;
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Trip Maps</h1>
+
+<label>Select day:</label>
+
+<select id="dateSelect" onchange="goToDate()">
+<option value="">Choose...</option>
+<option value="2026-05-01.html">2026-05-01</option><option value="2026-05-02.html">2026-05-02</option><option value="2026-05-03.html">2026-05-03</option><option value="2026-05-04.html">2026-05-04</option><option value="2026-05-05.html">2026-05-05</option>
+</select>
+
+<div class="grid">
+
+    <div class="card">
         <h3>2026-05-01</h3>
         <p>7 stops</p>
-        <p>
-          Stay at CASA DEL MAR, best view in Tossa harbour<br />SuperDive Dive
-          1<br />Hike Around the Fort
-        </p>
+        <p>Stay at CASA DEL MAR, best view in Tossa harbour<br>SuperDive Dive 1<br>Hike Around the Fort</p>
         <a href="calendar_maps/2026-05-01.html">Open Map →</a>
-        <iframe
-          src="calendar_maps/2026-05-01.html"
-          width="100%"
-          height="150"
-          style="border: none"
-        >
-        </iframe>
-      </div>
-
-      <div class="card">
+        <iframe src="calendar_maps/2026-05-01.html"
+        width="100%"
+        height="150"
+        style="border:none;">
+</iframe>
+    </div>
+    
+    <div class="card">
         <h3>2026-05-02</h3>
         <p>7 stops</p>
-        <p>
-          Stay at CASA DEL MAR, best view in Tossa harbour<br />Barcelona in
-          Motion ride to Hoxton<br />La Sagrada Familia
-        </p>
+        <p>Stay at CASA DEL MAR, best view in Tossa harbour<br>Barcelona in Motion ride to Hoxton<br>La Sagrada Familia</p>
         <a href="calendar_maps/2026-05-02.html">Open Map →</a>
-        <iframe
-          src="calendar_maps/2026-05-02.html"
-          width="100%"
-          height="150"
-          style="border: none"
-        >
-        </iframe>
-      </div>
-
-      <div class="card">
+        <iframe src="calendar_maps/2026-05-02.html"
+        width="100%"
+        height="150"
+        style="border:none;">
+</iframe>
+    </div>
+    
+    <div class="card">
         <h3>2026-05-03</h3>
         <p>3 stops</p>
-        <p>Check out<br />Park Güell<br />Transport to Cruise Port</p>
+        <p>Check out<br>Park Güell<br>Transport to Cruise Port</p>
         <a href="calendar_maps/2026-05-03.html">Open Map →</a>
-        <iframe
-          src="calendar_maps/2026-05-03.html"
-          width="100%"
-          height="150"
-          style="border: none"
-        >
-        </iframe>
-      </div>
-
-      <div class="card">
+        <iframe src="calendar_maps/2026-05-03.html"
+        width="100%"
+        height="150"
+        style="border:none;">
+</iframe>
+    </div>
+    
+    <div class="card">
         <h3>2026-05-04</h3>
         <p>7 stops</p>
-        <p>
-          Breakfast + Get going<br />Get to Notre Dame De La Garde<br />Notre
-          Dame De La Garde
-        </p>
+        <p>Breakfast + Get going<br>Get to Notre Dame De La Garde<br>Notre Dame De La Garde</p>
         <a href="calendar_maps/2026-05-04.html">Open Map →</a>
-        <iframe
-          src="calendar_maps/2026-05-04.html"
-          width="100%"
-          height="150"
-          style="border: none"
-        >
-        </iframe>
-      </div>
-
-      <div class="card">
+        <iframe src="calendar_maps/2026-05-04.html"
+        width="100%"
+        height="150"
+        style="border:none;">
+</iframe>
+    </div>
+    
+    <div class="card">
         <h3>2026-05-05</h3>
         <p>10 stops</p>
-        <p>Breakfast<br />Transport to Nice<br />Promenade des Anglais</p>
+        <p>Breakfast<br>Transport to Nice<br>Promenade des Anglais</p>
         <a href="calendar_maps/2026-05-05.html">Open Map →</a>
-        <iframe
-          src="calendar_maps/2026-05-05.html"
-          width="100%"
-          height="150"
-          style="border: none"
-        >
-        </iframe>
-      </div>
+        <iframe src="calendar_maps/2026-05-05.html"
+        width="100%"
+        height="150"
+        style="border:none;">
+</iframe>
     </div>
-  </body>
+    
+</div>
+
+</body>
 </html>

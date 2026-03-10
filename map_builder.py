@@ -1,47 +1,45 @@
 import folium
 import json
-import folium.utilities
 import openrouteservice
 from dotenv import load_dotenv
 import os
+import math
 
 load_dotenv()
+API_KEY = os.getenv("ORS_API_KEY")
 
-API_KEY= os.getenv("ORS_API_KEY")
-
-import math
 
 def haversine(a, b):
     R = 6371
     lat1, lon1 = a
     lat2, lon2 = b
 
-    dlat = math.radians(lat2-lat1)
-    dlon = math.radians(lon2-lon1)
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
 
-    x = (math.sin(dlat/2)**2 +
-         math.cos(math.radians(lat1)) *
-         math.cos(math.radians(lat2)) *
-         math.sin(dlon/2)**2)
+    x = (
+        math.sin(dlat / 2) ** 2
+        + math.cos(math.radians(lat1))
+        * math.cos(math.radians(lat2))
+        * math.sin(dlon / 2) ** 2
+    )
 
-    return 2 * R * math.atan2(math.sqrt(x), math.sqrt(1-x))
+    return 2 * R * math.atan2(math.sqrt(x), math.sqrt(1 - x))
 
 
 def save_metadata(date, events):
     stops = []
     for e in events:
-        stops.append({
-            "summary": e["summary"],
-            "time": e["time"],
-            "lat": e["coords"][0],
-            "lon": e["coords"][1]
-        })
+        stops.append(
+            {
+                "summary": e["summary"],
+                "time": e["time"],
+                "lat": e["coords"][0],
+                "lon": e["coords"][1],
+            }
+        )
 
-    data = {
-        "date": date,
-        "num_stops": len(stops),
-        "stops": stops
-    }
+    data = {"date": date, "num_stops": len(stops), "stops": stops}
 
     with open(f"calendar_maps/{date}.json", "w") as f:
         json.dump(data, f, indent=2)
@@ -53,145 +51,59 @@ def build_map(events, date_str):
         print("No events with locations.")
         return
 
-    coords_ors = [[e["coords"][1], e["coords"][0]] for e in events]
-
     client = openrouteservice.Client(key=API_KEY)
 
-    route_data = client.directions(
-        coordinates=coords_ors,
-        profile="foot-walking",
-        format="geojson",
-        optimize_waypoints=False
-    )
+    # ---------------------------------------------------
+    # Build legs by routing each pair of stops
+    # ---------------------------------------------------
 
-    route_coords = route_data["features"][0]["geometry"]["coordinates"]
+    leg_routes = []
+    leg_distances = []
 
-    route_latlngs = [[c[1], c[0]] for c in route_coords]
+    for i in range(len(events) - 1):
+        a = events[i]["coords"]
+        b = events[i + 1]["coords"]
+
+        leg = client.directions(
+            coordinates=[[a[1], a[0]], [b[1], b[0]]],
+            profile="foot-walking",
+            format="geojson",
+        )
+
+        coords = leg["features"][0]["geometry"]["coordinates"]
+        coords = [[c[1], c[0]] for c in coords]
+        leg_routes.append(coords)
+
+        # Safely extract distance
+        segments = leg["features"][0]["properties"].get("segments", [])
+        if segments and "distance" in segments[0]:
+            d = segments[0]["distance"] / 1000
+        else:
+            # fallback if not present
+            d = sum(haversine(coords[j], coords[j+1]) for j in range(len(coords)-1))
+        leg_distances.append(d)
+
+    # Flatten route for drawing
+    route_latlngs = []
+    for leg in leg_routes:
+        route_latlngs.extend(leg)
+
+    # ---------------------------------------------------
+    # Map setup
+    # ---------------------------------------------------
 
     center = [
         sum(c[0] for c in route_latlngs) / len(route_latlngs),
-        sum(c[1] for c in route_latlngs) / len(route_latlngs)
+        sum(c[1] for c in route_latlngs) / len(route_latlngs),
     ]
 
     m = folium.Map(location=center)
-
     m.fit_bounds(route_latlngs)
 
-    folium.PolyLine(
-        route_latlngs,
-        color="#1f78b4",
-        weight=5,
-        opacity=0.8
-    ).add_to(m)
+    folium.PolyLine(route_latlngs, color="#1f78b4", weight=5, opacity=0.8).add_to(m)
 
     # ---------------------------------------------------
-    # MOVING DOT ANIMATION (POLISHED)
-    # ---------------------------------------------------
-
-    route_js = json.dumps(route_latlngs)
-    stops_js = json.dumps([e["coords"] for e in events])
-    map_var = m.get_name()
-
-    total_km = 0
-    for i in range(len(route_latlngs)-1):
-        total_km += haversine(route_latlngs[i], route_latlngs[i+1])
-
-    duration_seconds = min(40, max(20, total_km * 1.2))
-    frame_delay = int((duration_seconds * 1000) / len(route_latlngs))
-
-    animation_script = f"""
-    <script>
-
-    window.addEventListener("load", function() {{
-
-        var map = {map_var};
-
-        var route = {route_js};
-        var stops = {stops_js};
-
-        // glowing purple marker
-        var marker = L.circleMarker(route[0], {{
-            radius:8,
-            color:"#6b21a8",
-            fillColor:"#9333ea",
-            fillOpacity:1,
-            weight:3
-        }}).addTo(map);
-
-        // trail behind marker
-        var trail = L.polyline([], {{
-            color:"#a855f7",
-            weight:4,
-            opacity:0.6
-        }}).addTo(map);
-
-        function dist(a,b){{
-            var dx = a[0]-b[0];
-            var dy = a[1]-b[1];
-            return dx*dx + dy*dy;
-        }}
-
-        var stopIndices = [];
-
-        stops.forEach(function(stop){{
-            var bestIndex = 0;
-            var bestDist = Infinity;
-
-            for(var i=0;i<route.length;i++){{
-                var d = dist(route[i], stop);
-                if(d < bestDist){{
-                    bestDist = d;
-                    bestIndex = i;
-                }}
-            }}
-
-            stopIndices.push(bestIndex);
-        }});
-
-        var i = 0;
-        var trailCoords = [];
-
-        function moveMarker(){{
-
-            var pt = route[i];
-
-            marker.setLatLng(pt);
-
-            trailCoords.push(pt);
-            trail.setLatLngs(trailCoords);
-
-            if(stopIndices.includes(i)){{
-                setTimeout(step, 900);
-            }} else {{
-                setTimeout(step, {frame_delay});
-            }}
-
-        }}
-
-        function step(){{
-
-            i++;
-
-            if(i >= route.length){{
-                i = 0;
-                trailCoords = [];
-                trail.setLatLngs([]);
-            }}
-
-            moveMarker();
-        }}
-
-        moveMarker();
-
-    }});
-
-    </script>
-    """
-
-    m.get_root().html.add_child(folium.Element(animation_script))
-
-    # ---------------------------------------------------
-    # EVENT MARKERS
+    # Stop markers
     # ---------------------------------------------------
 
     seen = {}
@@ -200,7 +112,7 @@ def build_map(events, date_str):
 
         lat, lon = e["coords"]
 
-        key = (round(lat,6), round(lon,6))
+        key = (round(lat, 6), round(lon, 6))
         count = seen.get(key, 0)
         seen[key] = count + 1
 
@@ -227,7 +139,7 @@ def build_map(events, date_str):
         folium.Marker(
             [lat, lon],
             popup=popup,
-            tooltip=e['summary'],
+            tooltip=e["summary"],
             icon=folium.DivIcon(
                 html=f"""
                 <div style="
@@ -244,33 +156,26 @@ def build_map(events, date_str):
                 {i}
                 </div>
                 """
-            )
+            ),
         ).add_to(m)
 
     # ---------------------------------------------------
-    # SIDEBAR WITH DISTANCES
+    # Sidebar itinerary
     # ---------------------------------------------------
 
     sidebar_items = ""
 
-    for i, e in enumerate(events, start=1):
+    for i, e in enumerate(events):
 
-        distance_html = ""
+        line = f"<b>{i+1}. {e['time']}</b><br>{e['summary']}"
 
-        if i < len(events):
-            dist = haversine(events[i-1]["coords"], events[i]["coords"])
-            distance_html = f"<div style='font-size:12px;color:#6b7280'>↳ {round(dist,1)} km</div>"
+        if i < len(leg_distances):
+            line += f"<br><span style='color:#666'>Walk {leg_distances[i]:.2f} km</span>"
 
-        sidebar_items += f"""
-        <div style="margin-bottom:12px">
-            <b>{i}. {e['time']}</b><br>
-            {e['summary']}
-            {distance_html}
-        </div>
-        """
+        sidebar_items += f"<div style='margin-bottom:12px'>{line}</div>"
 
     sidebar = f"""
-        <div id="sidebar" style="
+    <div id="sidebar" style="
         position: fixed;
         top: 10px;
         left: 10px;
@@ -283,19 +188,126 @@ def build_map(events, date_str):
         box-shadow:0 6px 16px rgba(0,0,0,0.25);
         z-index:9999;
         font-family:sans-serif;
-        ">
-        <h3 style="margin-top:0">Today's Route</h3>
-        {sidebar_items}
-        </div>
+    ">
+    <h3 style="margin-top:0">Today's Route</h3>
+    {sidebar_items}
+    </div>
 
-        <script>
-        if (window !== window.parent) {{
-            document.getElementById("sidebar").style.display = "none";
-        }}
-        </script>
+    <script>
+    if (window !== window.parent) {{
+        document.getElementById("sidebar").style.display = "none";
+    }}
+    </script>
     """
 
     m.get_root().html.add_child(folium.Element(sidebar))
+
+    # ---------------------------------------------------
+    # Animation
+    # ---------------------------------------------------
+
+    legs_js = json.dumps(leg_routes)
+
+    total_km = sum(leg_distances)
+    duration_seconds = min(40, max(20, total_km * 1.2))
+    total_points = sum(len(l) for l in leg_routes)
+    frame_delay = max(8, int((duration_seconds * 1000) / total_points))
+
+    animation_script = f"""
+<script>
+
+window.addEventListener("load", function() {{
+
+    var map = {m.get_name()};
+    var legs = {legs_js};
+
+    var marker = L.circleMarker(legs[0][0], {{
+        radius:8,
+        color:"#6b21a8",
+        fillColor:"#9333ea",
+        fillOpacity:1,
+        weight:3
+    }}).addTo(map);
+
+    var trail = L.polyline([], {{
+        color:"#a855f7",
+        weight:4,
+        opacity:0.6
+    }}).addTo(map);
+
+    function pulseStop(pt) {{
+
+        var circle = L.circle(pt,{{
+            radius:40,
+            color:"#9333ea",
+            opacity:0.6,
+            weight:2,
+            fill:false
+        }}).addTo(map);
+
+        var r = 40;
+
+        var grow = setInterval(function(){{
+            r += 20;
+            circle.setRadius(r);
+            circle.setStyle({{opacity:0.6-(r/300)}});
+
+            if(r>220){{
+                map.removeLayer(circle);
+                clearInterval(grow);
+            }}
+
+        }},40);
+    }}
+
+    var legIndex = 0;
+    var pointIndex = 0;
+    var trailCoords = [];
+
+    function step(){{
+
+        var leg = legs[legIndex];
+        var pt = leg[pointIndex];
+
+        marker.setLatLng(pt);
+
+        trailCoords.push(pt);
+        trail.setLatLngs(trailCoords);
+
+        pointIndex++;
+
+        if(pointIndex >= leg.length){{
+
+            pulseStop(pt);
+
+            legIndex++;
+
+            if(legIndex >= legs.length){{
+                legIndex = 0;
+                pointIndex = 0;
+                trailCoords = [];
+                trail.setLatLngs([]);
+                setTimeout(step,1200);
+                return;
+            }}
+
+            pointIndex = 0;
+            setTimeout(step,900);
+            return;
+        }}
+
+        setTimeout(step,{frame_delay});
+    }}
+
+    step();
+
+}});
+</script>
+"""
+
+    m.get_root().html.add_child(folium.Element(animation_script))
+
+    # ---------------------------------------------------
 
     m.save(f"calendar_maps/{date_str}.html")
     save_metadata(date_str, events)

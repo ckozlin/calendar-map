@@ -28,8 +28,8 @@ for file in files:
         <h3>{date}</h3>
         <p>{stops} stops</p>
         <p>{preview}</p>
-        <a href="{date}.html">Open Map →</a>
-        <iframe src="{date}.html"
+        <a href="calendar_maps/{date}.html">Open Map →</a>
+        <iframe src="calendar_maps/{date}.html"
         width="100%"
         height="150"
         style="border:none;">
@@ -46,7 +46,7 @@ html = f"""
 
 <h2>Trip Overview</h2>
 
-<iframe src="master_map.html"
+<iframe src="calendar_maps/master_map.html"
         width="100%"
         height="400"
         style="border:none; border-radius:10px;">
@@ -120,5 +120,5 @@ function goToDate() {{
 </html>
 """
 
-with open(f"{MAP_DIR}/index.html", "w") as f:
+with open(f"index.html", "w") as f:
     f.write(html)
