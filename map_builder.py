@@ -96,7 +96,7 @@ def build_map(events, date_str):
     for i in range(len(route_latlngs)-1):
         total_km += haversine(route_latlngs[i], route_latlngs[i+1])
 
-    duration_seconds = max(10, total_km * 4)
+    duration_seconds = min(40, max(20, total_km * 1.2))
     frame_delay = int((duration_seconds * 1000) / len(route_latlngs))
 
     animation_script = f"""
