@@ -11,25 +11,21 @@ API_KEY= os.getenv("ORS_API_KEY")
 
 import math
 
-def calculate_bearing(start, end):
-    """
-    Calculate bearing in degrees from start to end.
-    start/end: [lat, lon]
-    Returns angle in degrees clockwise from north.
-    """
-    lat1 = math.radians(start[0])
-    lat2 = math.radians(end[0])
-    diffLong = math.radians(end[1] - start[1])
+def haversine(a, b):
+    R = 6371
+    lat1, lon1 = a
+    lat2, lon2 = b
 
-    x = math.sin(diffLong) * math.cos(lat2)
-    y = math.cos(lat1) * math.sin(lat2) - \
-        math.sin(lat1) * math.cos(lat2) * math.cos(diffLong)
+    dlat = math.radians(lat2-lat1)
+    dlon = math.radians(lon2-lon1)
 
-    initial_bearing = math.atan2(x, y)
-    initial_bearing = math.degrees(initial_bearing)
-    compass_bearing = (initial_bearing + 360) % 360
+    x = (math.sin(dlat/2)**2 +
+         math.cos(math.radians(lat1)) *
+         math.cos(math.radians(lat2)) *
+         math.sin(dlon/2)**2)
 
-    return compass_bearing
+    return 2 * R * math.atan2(math.sqrt(x), math.sqrt(1-x))
+
 
 def save_metadata(date, events):
     stops = []
@@ -40,25 +36,27 @@ def save_metadata(date, events):
             "lat": e["coords"][0],
             "lon": e["coords"][1]
         })
+
     data = {
         "date": date,
         "num_stops": len(stops),
         "stops": stops
     }
+
     with open(f"calendar_maps/{date}.json", "w") as f:
         json.dump(data, f, indent=2)
 
+
 def build_map(events, date_str):
+
     if not events:
         print("No events with locations.")
         return
 
-    # ORS expects coordinates as [lon, lat]
     coords_ors = [[e["coords"][1], e["coords"][0]] for e in events]
 
     client = openrouteservice.Client(key=API_KEY)
 
-    # Get a real road route from ORS
     route_data = client.directions(
         coordinates=coords_ors,
         profile="foot-walking",
@@ -66,46 +64,152 @@ def build_map(events, date_str):
         optimize_waypoints=False
     )
 
-    # Extract route coordinates from GeoJSON (no decode_polyline needed)
     route_coords = route_data["features"][0]["geometry"]["coordinates"]
-    # Convert to [lat, lon] for Folium
+
     route_latlngs = [[c[1], c[0]] for c in route_coords]
 
-    # Center the map
     center = [
         sum(c[0] for c in route_latlngs) / len(route_latlngs),
         sum(c[1] for c in route_latlngs) / len(route_latlngs)
     ]
 
-    m = folium.Map(location=center, zoom_start=12)
+    m = folium.Map(location=center)
 
-    # Draw the main route
-    route_line = folium.PolyLine(
+    m.fit_bounds(route_latlngs)
+
+    folium.PolyLine(
         route_latlngs,
         color="#1f78b4",
         weight=5,
         opacity=0.8
     ).add_to(m)
 
-    # # Add directional arrows along the route
-    # step = max(1, len(route_latlngs)//100)
-    # for i in range(0, len(route_latlngs), step):
-    #     if i + 1 < len(route_latlngs):
-    #         start = route_latlngs[i]
-    #         end = route_latlngs[i + 1]
-    #         folium.RegularPolygonMarker(
-    #             location=start,
-    #             number_of_sides=3,
-    #             radius=6,
-    #             fill_opacity=0.9,
-    #             rotation=calculate_bearing(start, end)
-    #         ).add_to(m)
+    # ---------------------------------------------------
+    # MOVING DOT ANIMATION (POLISHED)
+    # ---------------------------------------------------
 
-    # Track duplicates for repeated location circles
+    route_js = json.dumps(route_latlngs)
+    stops_js = json.dumps([e["coords"] for e in events])
+    map_var = m.get_name()
+
+    total_km = 0
+    for i in range(len(route_latlngs)-1):
+        total_km += haversine(route_latlngs[i], route_latlngs[i+1])
+
+    duration_seconds = max(10, total_km * 4)
+    frame_delay = int((duration_seconds * 1000) / len(route_latlngs))
+
+    animation_script = f"""
+    <script>
+
+    window.addEventListener("load", function() {{
+
+        var map = {map_var};
+
+        var route = {route_js};
+        var stops = {stops_js};
+
+        // glowing purple marker
+        var marker = L.circleMarker(route[0], {{
+            radius:8,
+            color:"#6b21a8",
+            fillColor:"#9333ea",
+            fillOpacity:1,
+            weight:3
+        }}).addTo(map);
+
+        // trail behind marker
+        var trail = L.polyline([], {{
+            color:"#a855f7",
+            weight:4,
+            opacity:0.6
+        }}).addTo(map);
+
+        function dist(a,b){{
+            var dx = a[0]-b[0];
+            var dy = a[1]-b[1];
+            return dx*dx + dy*dy;
+        }}
+
+        var stopIndices = [];
+
+        stops.forEach(function(stop){{
+            var bestIndex = 0;
+            var bestDist = Infinity;
+
+            for(var i=0;i<route.length;i++){{
+                var d = dist(route[i], stop);
+                if(d < bestDist){{
+                    bestDist = d;
+                    bestIndex = i;
+                }}
+            }}
+
+            stopIndices.push(bestIndex);
+        }});
+
+        var i = 0;
+        var trailCoords = [];
+
+        function moveMarker(){{
+
+            var pt = route[i];
+
+            marker.setLatLng(pt);
+
+            trailCoords.push(pt);
+            trail.setLatLngs(trailCoords);
+
+            if(stopIndices.includes(i)){{
+                setTimeout(step, 900);
+            }} else {{
+                setTimeout(step, {frame_delay});
+            }}
+
+        }}
+
+        function step(){{
+
+            i++;
+
+            if(i >= route.length){{
+                i = 0;
+                trailCoords = [];
+                trail.setLatLngs([]);
+            }}
+
+            moveMarker();
+        }}
+
+        moveMarker();
+
+    }});
+
+    </script>
+    """
+
+    m.get_root().html.add_child(folium.Element(animation_script))
+
+    # ---------------------------------------------------
+    # EVENT MARKERS
+    # ---------------------------------------------------
+
     seen = {}
+
     for i, e in enumerate(events, start=1):
+
         lat, lon = e["coords"]
-        coord_tuple = (lat, lon)
+
+        key = (round(lat,6), round(lon,6))
+        count = seen.get(key, 0)
+        seen[key] = count + 1
+
+        if count > 0:
+            angle = count * 45
+            offset = 0.00015
+            lat += offset * math.cos(math.radians(angle))
+            lon += offset * math.sin(math.radians(angle))
+
         popup = f"""
         <div style="width:220px;font-family:sans-serif">
             <b>Stop {i}</b><br>
@@ -113,6 +217,7 @@ def build_map(events, date_str):
             🕒 {e['time']}
         </div>
         """
+
         marker_color = "#2563eb"
         if i == 1:
             marker_color = "#16a34a"
@@ -142,35 +247,28 @@ def build_map(events, date_str):
             )
         ).add_to(m)
 
-        if coord_tuple in seen:
-            # repeated location
-            folium.CircleMarker(
-                [lat, lon],
-                radius=6,
-                color="orange",
-                fill=True,
-                fill_opacity=0.9
-            ).add_to(m)
-            # optional loop hint line
-            start = [events[seen[coord_tuple]]["coords"][0], events[seen[coord_tuple]]["coords"][1]]
-            folium.PolyLine(
-                [start, [lat, lon]],
-                color="purple",
-                weight=2,
-                dash_array="3,6"
-            ).add_to(m)
-        else:
-            seen[coord_tuple] = i-1
+    # ---------------------------------------------------
+    # SIDEBAR WITH DISTANCES
+    # ---------------------------------------------------
 
-    # Sidebar itinerary
     sidebar_items = ""
+
     for i, e in enumerate(events, start=1):
+
+        distance_html = ""
+
+        if i < len(events):
+            dist = haversine(events[i-1]["coords"], events[i]["coords"])
+            distance_html = f"<div style='font-size:12px;color:#6b7280'>↳ {round(dist,1)} km</div>"
+
         sidebar_items += f"""
         <div style="margin-bottom:12px">
             <b>{i}. {e['time']}</b><br>
             {e['summary']}
+            {distance_html}
         </div>
         """
+
     sidebar = f"""
         <div id="sidebar" style="
         position: fixed;
@@ -196,6 +294,7 @@ def build_map(events, date_str):
         }}
         </script>
     """
+
     m.get_root().html.add_child(folium.Element(sidebar))
 
     m.save(f"calendar_maps/{date_str}.html")
