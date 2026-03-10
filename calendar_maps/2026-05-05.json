@@ -1,0 +1,66 @@
+{
+  "date": "2026-05-05",
+  "num_stops": 10,
+  "stops": [
+    {
+      "summary": "Breakfast",
+      "time": "07:00",
+      "lat": 43.6985187,
+      "lon": 7.308311499999999
+    },
+    {
+      "summary": "Transport to Nice",
+      "time": "08:00",
+      "lat": 43.694604,
+      "lon": 7.2610324
+    },
+    {
+      "summary": "Promenade des Anglais",
+      "time": "09:00",
+      "lat": 43.694604,
+      "lon": 7.2610324
+    },
+    {
+      "summary": "Cours Saleya Market",
+      "time": "09:30",
+      "lat": 43.6955865,
+      "lon": 7.274994
+    },
+    {
+      "summary": "Chapelle de La Misenicorde",
+      "time": "10:00",
+      "lat": 43.6957531,
+      "lon": 7.275389400000001
+    },
+    {
+      "summary": "Eglise du Jesus",
+      "time": "10:30",
+      "lat": 43.696812,
+      "lon": 7.2771928
+    },
+    {
+      "summary": "Lookout Point",
+      "time": "11:15",
+      "lat": 43.6946989,
+      "lon": 7.2798982
+    },
+    {
+      "summary": "Lunch",
+      "time": "12:00",
+      "lat": 43.6919027,
+      "lon": 7.290909
+    },
+    {
+      "summary": "Monte Carlo Casino",
+      "time": "14:00",
+      "lat": 43.7390972,
+      "lon": 7.428068100000001
+    },
+    {
+      "summary": "Back to ship",
+      "time": "15:30",
+      "lat": 43.6985187,
+      "lon": 7.308311499999999
+    }
+  ]
+}

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3ca92fbd428a77731f8b98e10d3efb23 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3ca92fbd428a77731f8b98e10d3efb23" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3ca92fbd428a77731f8b98e10d3efb23 = L.map(
+                "map_3ca92fbd428a77731f8b98e10d3efb23",
+                {
+                    center: [42.542386035294115, 4.515817611764706],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_12a2dccad4f93f866b3d00e694a7347f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_12a2dccad4f93f866b3d00e694a7347f.addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+            var marker_a8a1b8515d5f0194641306181023aa30 = L.marker(
+                [41.7170004, 2.9332821],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_a0a8810fe63fde6b038dab25cd8896af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e66760371801646082f958dd97b92ba1 = $(`<div id="html_e66760371801646082f958dd97b92ba1" style="width: 100.0%; height: 100.0%;">     <b>Stay at CASA DEL MAR, best view in Tossa harbour</b><br>     2026-05-02 All Day     </div>`)[0];
+                popup_a0a8810fe63fde6b038dab25cd8896af.setContent(html_e66760371801646082f958dd97b92ba1);
+            
+        
+
+        marker_a8a1b8515d5f0194641306181023aa30.bindPopup(popup_a0a8810fe63fde6b038dab25cd8896af)
+        ;
+
+        
+    
+    
+            var marker_549109b8a77ffa8bc5cdba09c3154b49 = L.marker(
+                [41.4037672, 2.1902532],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_ef80b9154b7b209baf7d246b0a561903 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bcf9fe190c1a7b326795ccd4a18e734c = $(`<div id="html_bcf9fe190c1a7b326795ccd4a18e734c" style="width: 100.0%; height: 100.0%;">     <b>Barcelona in Motion ride to Hoxton</b><br>     2026-05-02 10:00     </div>`)[0];
+                popup_ef80b9154b7b209baf7d246b0a561903.setContent(html_bcf9fe190c1a7b326795ccd4a18e734c);
+            
+        
+
+        marker_549109b8a77ffa8bc5cdba09c3154b49.bindPopup(popup_ef80b9154b7b209baf7d246b0a561903)
+        ;
+
+        
+    
+    
+            var marker_8cf3f942bd2c9fe844484499a51db789 = L.marker(
+                [41.4036299, 2.1743558],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_50f203aa9d845026f80dcc2e68d568c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96684ddadf4b3cabd10fca3a5cd4788a = $(`<div id="html_96684ddadf4b3cabd10fca3a5cd4788a" style="width: 100.0%; height: 100.0%;">     <b>La Sagrada Familia</b><br>     2026-05-02 15:30     </div>`)[0];
+                popup_50f203aa9d845026f80dcc2e68d568c9.setContent(html_96684ddadf4b3cabd10fca3a5cd4788a);
+            
+        
+
+        marker_8cf3f942bd2c9fe844484499a51db789.bindPopup(popup_50f203aa9d845026f80dcc2e68d568c9)
+        ;
+
+        
+    
+    
+            var marker_2047e3a58e34a8c3c55dccf9b2f8a895 = L.marker(
+                [41.3917, 2.164918],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_0c2fdc03844a9f9dec627938ea2c2de8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82ec06f32787733146cb4475358c2b55 = $(`<div id="html_82ec06f32787733146cb4475358c2b55" style="width: 100.0%; height: 100.0%;">     <b>Casa Battló</b><br>     2026-05-02 18:00     </div>`)[0];
+                popup_0c2fdc03844a9f9dec627938ea2c2de8.setContent(html_82ec06f32787733146cb4475358c2b55);
+            
+        
+
+        marker_2047e3a58e34a8c3c55dccf9b2f8a895.bindPopup(popup_0c2fdc03844a9f9dec627938ea2c2de8)
+        ;
+
+        
+    
+    
+            var marker_d121697f1775067509261bc92233fd62 = L.marker(
+                [41.3952155, 2.1619024],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_52009a1c946b58958d06cbba3be3a9e5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59da3b2f19414199092a86e9ac534968 = $(`<div id="html_59da3b2f19414199092a86e9ac534968" style="width: 100.0%; height: 100.0%;">     <b>La Pedrera</b><br>     2026-05-02 19:00     </div>`)[0];
+                popup_52009a1c946b58958d06cbba3be3a9e5.setContent(html_59da3b2f19414199092a86e9ac534968);
+            
+        
+
+        marker_d121697f1775067509261bc92233fd62.bindPopup(popup_52009a1c946b58958d06cbba3be3a9e5)
+        ;
+
+        
+    
+    
+            var marker_8e73e78aa2a76f81c850ed8e797cfe45 = L.marker(
+                [41.383962, 2.1761991],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_c0f3f5608a51d939b24e13f10593a476 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_93c8ea5ae57e3a445037208ac6e18587 = $(`<div id="html_93c8ea5ae57e3a445037208ac6e18587" style="width: 100.0%; height: 100.0%;">     <b>Barcelona Cathedral</b><br>     2026-05-02 20:45     </div>`)[0];
+                popup_c0f3f5608a51d939b24e13f10593a476.setContent(html_93c8ea5ae57e3a445037208ac6e18587);
+            
+        
+
+        marker_8e73e78aa2a76f81c850ed8e797cfe45.bindPopup(popup_c0f3f5608a51d939b24e13f10593a476)
+        ;
+
+        
+    
+    
+            var marker_71346d31d5fe087e49aa90d3865451fe = L.marker(
+                [41.3804056, 2.1789667],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_c39e0f2a28f2f6b40ec054387d05375b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b158083633ca0dc145fe4acac4aaece9 = $(`<div id="html_b158083633ca0dc145fe4acac4aaece9" style="width: 100.0%; height: 100.0%;">     <b>Bar Sincopa</b><br>     2026-05-02 21:30     </div>`)[0];
+                popup_c39e0f2a28f2f6b40ec054387d05375b.setContent(html_b158083633ca0dc145fe4acac4aaece9);
+            
+        
+
+        marker_71346d31d5fe087e49aa90d3865451fe.bindPopup(popup_c39e0f2a28f2f6b40ec054387d05375b)
+        ;
+
+        
+    
+    
+            var marker_3097f3fda12f02afad0285ba7c4443d5 = L.marker(
+                [41.4037672, 2.1902532],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_5ee5f54ed05162fde7833df47f732355 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c660ec4a2ae6a2e8fbfbe9c143a0768 = $(`<div id="html_7c660ec4a2ae6a2e8fbfbe9c143a0768" style="width: 100.0%; height: 100.0%;">     <b>Check out</b><br>     2026-05-03 08:00     </div>`)[0];
+                popup_5ee5f54ed05162fde7833df47f732355.setContent(html_7c660ec4a2ae6a2e8fbfbe9c143a0768);
+            
+        
+
+        marker_3097f3fda12f02afad0285ba7c4443d5.bindPopup(popup_5ee5f54ed05162fde7833df47f732355)
+        ;
+
+        
+    
+    
+            var marker_e50cbcc2e4bc9c38cbeec0acdb365d64 = L.marker(
+                [41.4144948, 2.1526945],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_154772567ef9d4f62703eec5c33292b4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b4f53e2b236b2f98c472655956420f1 = $(`<div id="html_1b4f53e2b236b2f98c472655956420f1" style="width: 100.0%; height: 100.0%;">     <b>Park Güell</b><br>     2026-05-03 09:00     </div>`)[0];
+                popup_154772567ef9d4f62703eec5c33292b4.setContent(html_1b4f53e2b236b2f98c472655956420f1);
+            
+        
+
+        marker_e50cbcc2e4bc9c38cbeec0acdb365d64.bindPopup(popup_154772567ef9d4f62703eec5c33292b4)
+        ;
+
+        
+    
+    
+            var marker_2540c0e6a7f4fe6d9c155024f5d49175 = L.marker(
+                [41.3602101, 2.1801477],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_73725cc1550f6fe07f6d8b2bfa1d1e2a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0afdb9697322f54b3d67b02f4045696a = $(`<div id="html_0afdb9697322f54b3d67b02f4045696a" style="width: 100.0%; height: 100.0%;">     <b>Transport to Cruise Port</b><br>     2026-05-03 13:00     </div>`)[0];
+                popup_73725cc1550f6fe07f6d8b2bfa1d1e2a.setContent(html_0afdb9697322f54b3d67b02f4045696a);
+            
+        
+
+        marker_2540c0e6a7f4fe6d9c155024f5d49175.bindPopup(popup_73725cc1550f6fe07f6d8b2bfa1d1e2a)
+        ;
+
+        
+    
+    
+            var marker_c189a337848f3df117a719fa6cd8168f = L.marker(
+                [43.3432609, 5.3330744],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_c7e737afbf18ac6408bb88457aae3ec4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f6d956bc478f2ce5ef7b7d754de2219 = $(`<div id="html_3f6d956bc478f2ce5ef7b7d754de2219" style="width: 100.0%; height: 100.0%;">     <b>Breakfast + Get going</b><br>     2026-05-04 07:00     </div>`)[0];
+                popup_c7e737afbf18ac6408bb88457aae3ec4.setContent(html_3f6d956bc478f2ce5ef7b7d754de2219);
+            
+        
+
+        marker_c189a337848f3df117a719fa6cd8168f.bindPopup(popup_c7e737afbf18ac6408bb88457aae3ec4)
+        ;
+
+        
+    
+    
+            var marker_136532153d6a1368644b54173ed3a625 = L.marker(
+                [43.2839533, 5.3712377],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_dda4b7b279ba9db932f1578fc0e73289 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_697b0d33d5cd4f742c215d3f5bbacb33 = $(`<div id="html_697b0d33d5cd4f742c215d3f5bbacb33" style="width: 100.0%; height: 100.0%;">     <b>Get to Notre Dame De La Garde</b><br>     2026-05-04 08:00     </div>`)[0];
+                popup_dda4b7b279ba9db932f1578fc0e73289.setContent(html_697b0d33d5cd4f742c215d3f5bbacb33);
+            
+        
+
+        marker_136532153d6a1368644b54173ed3a625.bindPopup(popup_dda4b7b279ba9db932f1578fc0e73289)
+        ;
+
+        
+    
+    
+            var marker_34547fbd33aa41b44f3987b5914d455d = L.marker(
+                [43.2839533, 5.3712377],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_85d4034e42d468ca1028eb0b2f9ea246 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_efa3c7806e55ee15e39b44ca8606db9a = $(`<div id="html_efa3c7806e55ee15e39b44ca8606db9a" style="width: 100.0%; height: 100.0%;">     <b>Notre Dame De La Garde</b><br>     2026-05-04 09:00     </div>`)[0];
+                popup_85d4034e42d468ca1028eb0b2f9ea246.setContent(html_efa3c7806e55ee15e39b44ca8606db9a);
+            
+        
+
+        marker_34547fbd33aa41b44f3987b5914d455d.bindPopup(popup_85d4034e42d468ca1028eb0b2f9ea246)
+        ;
+
+        
+    
+    
+            var marker_dcedf085c6fafeb55cde97a9e1ea609e = L.marker(
+                [43.30426689999999, 5.3946029],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_dca8114ada89a36764add6d3d66a96aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ef7339fc62cbe5871fae4619ca895a5 = $(`<div id="html_4ef7339fc62cbe5871fae4619ca895a5" style="width: 100.0%; height: 100.0%;">     <b>Palais Longchamp</b><br>     2026-05-04 10:30     </div>`)[0];
+                popup_dca8114ada89a36764add6d3d66a96aa.setContent(html_4ef7339fc62cbe5871fae4619ca895a5);
+            
+        
+
+        marker_dcedf085c6fafeb55cde97a9e1ea609e.bindPopup(popup_dca8114ada89a36764add6d3d66a96aa)
+        ;
+
+        
+    
+    
+            var marker_2255d8d9f8389e667414194b29d866d7 = L.marker(
+                [43.2960745, 5.3739954],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_c18271dbaf88a4bad7a96a5b20c56488 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d106daf0e0e96154dca05a22971ae361 = $(`<div id="html_d106daf0e0e96154dca05a22971ae361" style="width: 100.0%; height: 100.0%;">     <b>Lunch</b><br>     2026-05-04 12:30     </div>`)[0];
+                popup_c18271dbaf88a4bad7a96a5b20c56488.setContent(html_d106daf0e0e96154dca05a22971ae361);
+            
+        
+
+        marker_2255d8d9f8389e667414194b29d866d7.bindPopup(popup_c18271dbaf88a4bad7a96a5b20c56488)
+        ;
+
+        
+    
+    
+            var marker_4070d134b716adbd2bededd86b43bcd6 = L.marker(
+                [43.2992976, 5.364701699999999],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_620559204d5bdf22907efcebdacdc6c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_475ef41c90730683e251c4f77ac540dc = $(`<div id="html_475ef41c90730683e251c4f77ac540dc" style="width: 100.0%; height: 100.0%;">     <b>Walk + Cathedrale</b><br>     2026-05-04 13:30     </div>`)[0];
+                popup_620559204d5bdf22907efcebdacdc6c6.setContent(html_475ef41c90730683e251c4f77ac540dc);
+            
+        
+
+        marker_4070d134b716adbd2bededd86b43bcd6.bindPopup(popup_620559204d5bdf22907efcebdacdc6c6)
+        ;
+
+        
+    
+    
+            var marker_d456a9ea51d8021d497bcaeb5c7aac6b = L.marker(
+                [43.3432609, 5.3330744],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_bc3b11c5cc729cc7d5e2c78685db38a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef749c2bdeb5dcd8349b2aec93aa2fa4 = $(`<div id="html_ef749c2bdeb5dcd8349b2aec93aa2fa4" style="width: 100.0%; height: 100.0%;">     <b>Ship departure</b><br>     2026-05-04 17:00     </div>`)[0];
+                popup_bc3b11c5cc729cc7d5e2c78685db38a8.setContent(html_ef749c2bdeb5dcd8349b2aec93aa2fa4);
+            
+        
+
+        marker_d456a9ea51d8021d497bcaeb5c7aac6b.bindPopup(popup_bc3b11c5cc729cc7d5e2c78685db38a8)
+        ;
+
+        
+    
+    
+            var marker_cf6e3d9f6e8d4112680576a76ec219d2 = L.marker(
+                [43.6985187, 7.308311499999999],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_7df690d48875275da040e48fd8f1180b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dccaa61771711f352fbae1acccbd3bd3 = $(`<div id="html_dccaa61771711f352fbae1acccbd3bd3" style="width: 100.0%; height: 100.0%;">     <b>Breakfast</b><br>     2026-05-05 07:00     </div>`)[0];
+                popup_7df690d48875275da040e48fd8f1180b.setContent(html_dccaa61771711f352fbae1acccbd3bd3);
+            
+        
+
+        marker_cf6e3d9f6e8d4112680576a76ec219d2.bindPopup(popup_7df690d48875275da040e48fd8f1180b)
+        ;
+
+        
+    
+    
+            var marker_c982734b75bcbb2c1b3bcd613a631738 = L.marker(
+                [43.694604, 7.2610324],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_5e034ea58e19f4680fb4ad51f3abda98 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31b63f4456d8a51fef07de99405cb793 = $(`<div id="html_31b63f4456d8a51fef07de99405cb793" style="width: 100.0%; height: 100.0%;">     <b>Transport to Nice</b><br>     2026-05-05 08:00     </div>`)[0];
+                popup_5e034ea58e19f4680fb4ad51f3abda98.setContent(html_31b63f4456d8a51fef07de99405cb793);
+            
+        
+
+        marker_c982734b75bcbb2c1b3bcd613a631738.bindPopup(popup_5e034ea58e19f4680fb4ad51f3abda98)
+        ;
+
+        
+    
+    
+            var marker_7cd91c5895ec5125b6b2f1655def314f = L.marker(
+                [43.694604, 7.2610324],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_a4b2d18ca01e58d12af35a8a2ba6d994 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8077e9e59141e6812beaa041f9c36b39 = $(`<div id="html_8077e9e59141e6812beaa041f9c36b39" style="width: 100.0%; height: 100.0%;">     <b>Promenade des Anglais</b><br>     2026-05-05 09:00     </div>`)[0];
+                popup_a4b2d18ca01e58d12af35a8a2ba6d994.setContent(html_8077e9e59141e6812beaa041f9c36b39);
+            
+        
+
+        marker_7cd91c5895ec5125b6b2f1655def314f.bindPopup(popup_a4b2d18ca01e58d12af35a8a2ba6d994)
+        ;
+
+        
+    
+    
+            var marker_2ab583331d8450262ed80610d51c164b = L.marker(
+                [43.6955865, 7.274994],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_a04ca597d3f1edc93e38b1c567a11bd6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b90aeee3448eb5781f1f32aa407130d = $(`<div id="html_3b90aeee3448eb5781f1f32aa407130d" style="width: 100.0%; height: 100.0%;">     <b>Cours Saleya Market</b><br>     2026-05-05 09:30     </div>`)[0];
+                popup_a04ca597d3f1edc93e38b1c567a11bd6.setContent(html_3b90aeee3448eb5781f1f32aa407130d);
+            
+        
+
+        marker_2ab583331d8450262ed80610d51c164b.bindPopup(popup_a04ca597d3f1edc93e38b1c567a11bd6)
+        ;
+
+        
+    
+    
+            var marker_44e0c70d4e41a1c209cced816cab2f57 = L.marker(
+                [43.6957531, 7.275389400000001],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_cb796f04ca292a3881670955b3fdd140 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_37217fba33fcf604933d78a42a9a3111 = $(`<div id="html_37217fba33fcf604933d78a42a9a3111" style="width: 100.0%; height: 100.0%;">     <b>Chapelle de La Misenicorde</b><br>     2026-05-05 10:00     </div>`)[0];
+                popup_cb796f04ca292a3881670955b3fdd140.setContent(html_37217fba33fcf604933d78a42a9a3111);
+            
+        
+
+        marker_44e0c70d4e41a1c209cced816cab2f57.bindPopup(popup_cb796f04ca292a3881670955b3fdd140)
+        ;
+
+        
+    
+    
+            var marker_897a75f180c219baee890195d3ebb520 = L.marker(
+                [43.696812, 7.2771928],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_64a8e9ba1066501cccab0c59f35748f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f9874a3763eb53b6cb258ba96928919c = $(`<div id="html_f9874a3763eb53b6cb258ba96928919c" style="width: 100.0%; height: 100.0%;">     <b>Eglise du Jesus</b><br>     2026-05-05 10:30     </div>`)[0];
+                popup_64a8e9ba1066501cccab0c59f35748f9.setContent(html_f9874a3763eb53b6cb258ba96928919c);
+            
+        
+
+        marker_897a75f180c219baee890195d3ebb520.bindPopup(popup_64a8e9ba1066501cccab0c59f35748f9)
+        ;
+
+        
+    
+    
+            var marker_9fedc13348e5277249465773b41da4f0 = L.marker(
+                [43.6946989, 7.2798982],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_a54c6707bca4c148a29c51b4fdaedaa7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a9f3f2fe2f6dd7ac1b80dc3044ae6e72 = $(`<div id="html_a9f3f2fe2f6dd7ac1b80dc3044ae6e72" style="width: 100.0%; height: 100.0%;">     <b>Lookout Point</b><br>     2026-05-05 11:15     </div>`)[0];
+                popup_a54c6707bca4c148a29c51b4fdaedaa7.setContent(html_a9f3f2fe2f6dd7ac1b80dc3044ae6e72);
+            
+        
+
+        marker_9fedc13348e5277249465773b41da4f0.bindPopup(popup_a54c6707bca4c148a29c51b4fdaedaa7)
+        ;
+
+        
+    
+    
+            var marker_cb55cf4ad0db960e697b135098e7e632 = L.marker(
+                [43.6919027, 7.290909],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_bfbf203d5bceabad5e1f29d5bad2a6b3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b898b346c7d81345db950f0c4ebafebb = $(`<div id="html_b898b346c7d81345db950f0c4ebafebb" style="width: 100.0%; height: 100.0%;">     <b>Lunch</b><br>     2026-05-05 12:00     </div>`)[0];
+                popup_bfbf203d5bceabad5e1f29d5bad2a6b3.setContent(html_b898b346c7d81345db950f0c4ebafebb);
+            
+        
+
+        marker_cb55cf4ad0db960e697b135098e7e632.bindPopup(popup_bfbf203d5bceabad5e1f29d5bad2a6b3)
+        ;
+
+        
+    
+    
+            var marker_876277270994306c972532fa7e1330ef = L.marker(
+                [43.7390972, 7.428068100000001],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_c8123e81c3b3f3acc88e3bf2d6259b67 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f5e84394d1ab8957507ffb5f596025c = $(`<div id="html_5f5e84394d1ab8957507ffb5f596025c" style="width: 100.0%; height: 100.0%;">     <b>Monte Carlo Casino</b><br>     2026-05-05 14:00     </div>`)[0];
+                popup_c8123e81c3b3f3acc88e3bf2d6259b67.setContent(html_5f5e84394d1ab8957507ffb5f596025c);
+            
+        
+
+        marker_876277270994306c972532fa7e1330ef.bindPopup(popup_c8123e81c3b3f3acc88e3bf2d6259b67)
+        ;
+
+        
+    
+    
+            var marker_e494aa3e5d8bb3b0be969dff458e0822 = L.marker(
+                [43.6985187, 7.308311499999999],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_f31eb2071391218bae199c66f125b102 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_32c273085a6bd6fdd2f77d04bb03c31f = $(`<div id="html_32c273085a6bd6fdd2f77d04bb03c31f" style="width: 100.0%; height: 100.0%;">     <b>Back to ship</b><br>     2026-05-05 15:30     </div>`)[0];
+                popup_f31eb2071391218bae199c66f125b102.setContent(html_32c273085a6bd6fdd2f77d04bb03c31f);
+            
+        
+
+        marker_e494aa3e5d8bb3b0be969dff458e0822.bindPopup(popup_f31eb2071391218bae199c66f125b102)
+        ;
+
+        
+    
+    
+            var marker_ed1bf0cc7ad099c45a02f7fab91e8ac4 = L.marker(
+                [41.7170004, 2.9332821],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_4d60f8ded239ebb2744c7aafe4a453d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_02d42ee84049f06d02303e02b061509f = $(`<div id="html_02d42ee84049f06d02303e02b061509f" style="width: 100.0%; height: 100.0%;">     <b>Stay at CASA DEL MAR, best view in Tossa harbour</b><br>     2026-05-01 All Day     </div>`)[0];
+                popup_4d60f8ded239ebb2744c7aafe4a453d9.setContent(html_02d42ee84049f06d02303e02b061509f);
+            
+        
+
+        marker_ed1bf0cc7ad099c45a02f7fab91e8ac4.bindPopup(popup_4d60f8ded239ebb2744c7aafe4a453d9)
+        ;
+
+        
+    
+    
+            var marker_12327b62d9a9b98f7a694f8fa002ceb7 = L.marker(
+                [41.7238263, 2.9320244],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_42fe3cada52aedaed2ca589a073b1ecf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91c651d71e327422cf28b88c58b8c086 = $(`<div id="html_91c651d71e327422cf28b88c58b8c086" style="width: 100.0%; height: 100.0%;">     <b>SuperDive Dive 1</b><br>     2026-05-01 08:30     </div>`)[0];
+                popup_42fe3cada52aedaed2ca589a073b1ecf.setContent(html_91c651d71e327422cf28b88c58b8c086);
+            
+        
+
+        marker_12327b62d9a9b98f7a694f8fa002ceb7.bindPopup(popup_42fe3cada52aedaed2ca589a073b1ecf)
+        ;
+
+        
+    
+    
+            var marker_1b18e28ec229fdeb75db437ab81eaf8a = L.marker(
+                [41.7170757, 2.9331981],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_aa1d05408aa9274f01c4007618bd4fba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6917db2f3aa0cea07f873333edf11697 = $(`<div id="html_6917db2f3aa0cea07f873333edf11697" style="width: 100.0%; height: 100.0%;">     <b>Hike Around the Fort</b><br>     2026-05-01 10:30     </div>`)[0];
+                popup_aa1d05408aa9274f01c4007618bd4fba.setContent(html_6917db2f3aa0cea07f873333edf11697);
+            
+        
+
+        marker_1b18e28ec229fdeb75db437ab81eaf8a.bindPopup(popup_aa1d05408aa9274f01c4007618bd4fba)
+        ;
+
+        
+    
+    
+            var marker_44dab5d7e592f383423eb5c973b8d60c = L.marker(
+                [41.7159305, 2.9325242],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_e529f394e1b3b482818411397f0a94be = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e065f3e7765e4e642d6908cfd84c80d = $(`<div id="html_7e065f3e7765e4e642d6908cfd84c80d" style="width: 100.0%; height: 100.0%;">     <b>Lunch + Secret Beach</b><br>     2026-05-01 12:00     </div>`)[0];
+                popup_e529f394e1b3b482818411397f0a94be.setContent(html_7e065f3e7765e4e642d6908cfd84c80d);
+            
+        
+
+        marker_44dab5d7e592f383423eb5c973b8d60c.bindPopup(popup_e529f394e1b3b482818411397f0a94be)
+        ;
+
+        
+    
+    
+            var marker_01be776978c0147d5c28d253f04f14aa = L.marker(
+                [41.7170004, 2.9332821],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_61ff4034b3d3d1d1e9f1ad84d9c8be0e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_84f9fc5625bb6c6430d04682a30a6ee2 = $(`<div id="html_84f9fc5625bb6c6430d04682a30a6ee2" style="width: 100.0%; height: 100.0%;">     <b>Prep for Dive 2</b><br>     2026-05-01 15:00     </div>`)[0];
+                popup_61ff4034b3d3d1d1e9f1ad84d9c8be0e.setContent(html_84f9fc5625bb6c6430d04682a30a6ee2);
+            
+        
+
+        marker_01be776978c0147d5c28d253f04f14aa.bindPopup(popup_61ff4034b3d3d1d1e9f1ad84d9c8be0e)
+        ;
+
+        
+    
+    
+            var marker_0857963ef9195148819954599350d802 = L.marker(
+                [41.7238263, 2.9320244],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_4909de073ef2b2bfad980de8d18ba07c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7dc40bf4a2b486bb7a373fedec9f4552 = $(`<div id="html_7dc40bf4a2b486bb7a373fedec9f4552" style="width: 100.0%; height: 100.0%;">     <b>SuperDive Dive 2</b><br>     2026-05-01 16:00     </div>`)[0];
+                popup_4909de073ef2b2bfad980de8d18ba07c.setContent(html_7dc40bf4a2b486bb7a373fedec9f4552);
+            
+        
+
+        marker_0857963ef9195148819954599350d802.bindPopup(popup_4909de073ef2b2bfad980de8d18ba07c)
+        ;
+
+        
+    
+    
+            var marker_32b83b1edd335d18e66ad5cf5ad51de3 = L.marker(
+                [41.7181497, 2.9314273],
+                {
+}
+            ).addTo(map_3ca92fbd428a77731f8b98e10d3efb23);
+        
+    
+        var popup_90c65868c30e8dd064054f444de54819 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d055c707cc2b5fe16f6b4055745eb7dc = $(`<div id="html_d055c707cc2b5fe16f6b4055745eb7dc" style="width: 100.0%; height: 100.0%;">     <b>DInner at L'Espai</b><br>     2026-05-01 17:30     </div>`)[0];
+                popup_90c65868c30e8dd064054f444de54819.setContent(html_d055c707cc2b5fe16f6b4055745eb7dc);
+            
+        
+
+        marker_32b83b1edd335d18e66ad5cf5ad51de3.bindPopup(popup_90c65868c30e8dd064054f444de54819)
+        ;
+
+        
+    
+</script>
+</html>

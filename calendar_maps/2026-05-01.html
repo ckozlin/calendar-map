@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f45cba2367f0993ae48a0f21c2348d52 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <script>
+
+    window.addEventListener("load", function() {
+
+        var map = map_f45cba2367f0993ae48a0f21c2348d52;
+
+        var route = [[41.716976, 2.933328], [41.717052, 2.933399], [41.717059, 2.933321], [41.71707, 2.933197], [41.717059, 2.933321], [41.717052, 2.933399], [41.717055, 2.933643], [41.717018, 2.933665], [41.716978, 2.933654], [41.716921, 2.933714], [41.716884, 2.933784], [41.716875, 2.933985], [41.717125, 2.934409], [41.717205, 2.934476], [41.717248, 2.934462], [41.717276, 2.934392], [41.717275, 2.934321], [41.717237, 2.93416], [41.717252, 2.934124], [41.717285, 2.934106], [41.717363, 2.934143], [41.717387, 2.934193], [41.717391, 2.934231], [41.717336, 2.93445], [41.717341, 2.934474], [41.717381, 2.934478], [41.717401, 2.93446], [41.717469, 2.934276], [41.717463, 2.934188], [41.717258, 2.933906], [41.717222, 2.933822], [41.717182, 2.933647], [41.717179, 2.933354], [41.717253, 2.933034], [41.717034, 2.932829], [41.716963, 2.932642], [41.716982, 2.932531], [41.716952, 2.932469], [41.716863, 2.932485], [41.716618, 2.932457], [41.716554, 2.932458], [41.716287, 2.932535], [41.716252, 2.932475], [41.716049, 2.932305], [41.716008, 2.932289], [41.715947, 2.932317], [41.715901, 2.932345], [41.715947, 2.932317], [41.716008, 2.932289], [41.716049, 2.932305], [41.716252, 2.932475], [41.716287, 2.932535], [41.716554, 2.932458], [41.716618, 2.932457], [41.716863, 2.932485], [41.716952, 2.932469], [41.716979, 2.932448], [41.71706, 2.932362], [41.717212, 2.932311], [41.717322, 2.932312], [41.717648, 2.932193], [41.71787, 2.932135], [41.718298, 2.932037], [41.718392, 2.932012], [41.71895, 2.932029], [41.719162, 2.93205], [41.719304, 2.932084], [41.719587, 2.932137], [41.719696, 2.932162], [41.719828, 2.932144], [41.720085, 2.93209], [41.72026, 2.932205], [41.720583, 2.932453], [41.720654, 2.932527], [41.720685, 2.932583], [41.720792, 2.932771], [41.721236, 2.9325], [41.721374, 2.93237], [41.721692, 2.932872], [41.722074, 2.93251], [41.722325, 2.93226], [41.723039, 2.931597], [41.723089, 2.93162], [41.723213, 2.93182], [41.723264, 2.931766], [41.723305, 2.931723], [41.723358, 2.931666], [41.723768, 2.932307], [41.7239, 2.932115], [41.723768, 2.932307], [41.723358, 2.931666], [41.723305, 2.931723], [41.723264, 2.931766], [41.723213, 2.93182], [41.723089, 2.93162], [41.723039, 2.931597], [41.722325, 2.93226], [41.722074, 2.93251], [41.721692, 2.932872], [41.721374, 2.93237], [41.721236, 2.9325], [41.720792, 2.932771], [41.720685, 2.932583], [41.720654, 2.932527], [41.720583, 2.932453], [41.72026, 2.932205], [41.720085, 2.93209], [41.719828, 2.932144], [41.719696, 2.932162], [41.719587, 2.932137], [41.719304, 2.932084], [41.719162, 2.93205], [41.71895, 2.932029], [41.718392, 2.932012], [41.718298, 2.932037], [41.718222, 2.931771], [41.718203, 2.931752], [41.718163, 2.931757], [41.718073, 2.931794], [41.718018, 2.931538], [41.718161, 2.931496]];
+        var stops = [[41.7170004, 2.9332821], [41.7238263, 2.9320244], [41.7170757, 2.9331981], [41.7159305, 2.9325242], [41.7170004, 2.9332821], [41.7238263, 2.9320244], [41.7181497, 2.9314273]];
+
+        // glowing purple marker
+        var marker = L.circleMarker(route[0], {
+            radius:8,
+            color:"#6b21a8",
+            fillColor:"#9333ea",
+            fillOpacity:1,
+            weight:3
+        }).addTo(map);
+
+        // trail behind marker
+        var trail = L.polyline([], {
+            color:"#a855f7",
+            weight:4,
+            opacity:0.6
+        }).addTo(map);
+
+        function dist(a,b){
+            var dx = a[0]-b[0];
+            var dy = a[1]-b[1];
+            return dx*dx + dy*dy;
+        }
+
+        var stopIndices = [];
+
+        stops.forEach(function(stop){
+            var bestIndex = 0;
+            var bestDist = Infinity;
+
+            for(var i=0;i<route.length;i++){
+                var d = dist(route[i], stop);
+                if(d < bestDist){
+                    bestDist = d;
+                    bestIndex = i;
+                }
+            }
+
+            stopIndices.push(bestIndex);
+        });
+
+        var i = 0;
+        var trailCoords = [];
+
+        function moveMarker(){
+
+            var pt = route[i];
+
+            marker.setLatLng(pt);
+
+            trailCoords.push(pt);
+            trail.setLatLngs(trailCoords);
+
+            if(stopIndices.includes(i)){
+                setTimeout(step, 900);
+            } else {
+                setTimeout(step, 165);
+            }
+
+        }
+
+        function step(){
+
+            i++;
+
+            if(i >= route.length){
+                i = 0;
+                trailCoords = [];
+                trail.setLatLngs([]);
+            }
+
+            moveMarker();
+        }
+
+        moveMarker();
+
+    });
+
+    </script>
+    
+    
+        <div id="sidebar" style="
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: 260px;
+        max-height: 90%;
+        overflow:auto;
+        background:white;
+        padding:18px;
+        border-radius:10px;
+        box-shadow:0 6px 16px rgba(0,0,0,0.25);
+        z-index:9999;
+        font-family:sans-serif;
+        ">
+        <h3 style="margin-top:0">Today's Route</h3>
+        
+        <div style="margin-bottom:12px">
+            <b>1. All Day</b><br>
+            Stay at CASA DEL MAR, best view in Tossa harbour
+            <div style='font-size:12px;color:#6b7280'>↳ 0.8 km</div>
+        </div>
+        
+        <div style="margin-bottom:12px">
+            <b>2. 08:30</b><br>
+            SuperDive Dive 1
+            <div style='font-size:12px;color:#6b7280'>↳ 0.8 km</div>
+        </div>
+        
+        <div style="margin-bottom:12px">
+            <b>3. 10:30</b><br>
+            Hike Around the Fort
+            <div style='font-size:12px;color:#6b7280'>↳ 0.1 km</div>
+        </div>
+        
+        <div style="margin-bottom:12px">
+            <b>4. 12:00</b><br>
+            Lunch + Secret Beach
+            <div style='font-size:12px;color:#6b7280'>↳ 0.1 km</div>
+        </div>
+        
+        <div style="margin-bottom:12px">
+            <b>5. 15:00</b><br>
+            Prep for Dive 2
+            <div style='font-size:12px;color:#6b7280'>↳ 0.8 km</div>
+        </div>
+        
+        <div style="margin-bottom:12px">
+            <b>6. 16:00</b><br>
+            SuperDive Dive 2
+            <div style='font-size:12px;color:#6b7280'>↳ 0.6 km</div>
+        </div>
+        
+        <div style="margin-bottom:12px">
+            <b>7. 17:30</b><br>
+            DInner at L'Espai
+            
+        </div>
+        
+        </div>
+
+        <script>
+        if (window !== window.parent) {
+            document.getElementById("sidebar").style.display = "none";
+        }
+        </script>
+    
+    
+            <div class="folium-map" id="map_f45cba2367f0993ae48a0f21c2348d52" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f45cba2367f0993ae48a0f21c2348d52 = L.map(
+                "map_f45cba2367f0993ae48a0f21c2348d52",
+                {
+                    center: [41.71883739669422, 2.932694355371901],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c5633b6459358f27d6c3376b5e37125b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c5633b6459358f27d6c3376b5e37125b.addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            map_f45cba2367f0993ae48a0f21c2348d52.fitBounds(
+                [[41.716976, 2.933328], [41.717052, 2.933399], [41.717059, 2.933321], [41.71707, 2.933197], [41.717059, 2.933321], [41.717052, 2.933399], [41.717055, 2.933643], [41.717018, 2.933665], [41.716978, 2.933654], [41.716921, 2.933714], [41.716884, 2.933784], [41.716875, 2.933985], [41.717125, 2.934409], [41.717205, 2.934476], [41.717248, 2.934462], [41.717276, 2.934392], [41.717275, 2.934321], [41.717237, 2.93416], [41.717252, 2.934124], [41.717285, 2.934106], [41.717363, 2.934143], [41.717387, 2.934193], [41.717391, 2.934231], [41.717336, 2.93445], [41.717341, 2.934474], [41.717381, 2.934478], [41.717401, 2.93446], [41.717469, 2.934276], [41.717463, 2.934188], [41.717258, 2.933906], [41.717222, 2.933822], [41.717182, 2.933647], [41.717179, 2.933354], [41.717253, 2.933034], [41.717034, 2.932829], [41.716963, 2.932642], [41.716982, 2.932531], [41.716952, 2.932469], [41.716863, 2.932485], [41.716618, 2.932457], [41.716554, 2.932458], [41.716287, 2.932535], [41.716252, 2.932475], [41.716049, 2.932305], [41.716008, 2.932289], [41.715947, 2.932317], [41.715901, 2.932345], [41.715947, 2.932317], [41.716008, 2.932289], [41.716049, 2.932305], [41.716252, 2.932475], [41.716287, 2.932535], [41.716554, 2.932458], [41.716618, 2.932457], [41.716863, 2.932485], [41.716952, 2.932469], [41.716979, 2.932448], [41.71706, 2.932362], [41.717212, 2.932311], [41.717322, 2.932312], [41.717648, 2.932193], [41.71787, 2.932135], [41.718298, 2.932037], [41.718392, 2.932012], [41.71895, 2.932029], [41.719162, 2.93205], [41.719304, 2.932084], [41.719587, 2.932137], [41.719696, 2.932162], [41.719828, 2.932144], [41.720085, 2.93209], [41.72026, 2.932205], [41.720583, 2.932453], [41.720654, 2.932527], [41.720685, 2.932583], [41.720792, 2.932771], [41.721236, 2.9325], [41.721374, 2.93237], [41.721692, 2.932872], [41.722074, 2.93251], [41.722325, 2.93226], [41.723039, 2.931597], [41.723089, 2.93162], [41.723213, 2.93182], [41.723264, 2.931766], [41.723305, 2.931723], [41.723358, 2.931666], [41.723768, 2.932307], [41.7239, 2.932115], [41.723768, 2.932307], [41.723358, 2.931666], [41.723305, 2.931723], [41.723264, 2.931766], [41.723213, 2.93182], [41.723089, 2.93162], [41.723039, 2.931597], [41.722325, 2.93226], [41.722074, 2.93251], [41.721692, 2.932872], [41.721374, 2.93237], [41.721236, 2.9325], [41.720792, 2.932771], [41.720685, 2.932583], [41.720654, 2.932527], [41.720583, 2.932453], [41.72026, 2.932205], [41.720085, 2.93209], [41.719828, 2.932144], [41.719696, 2.932162], [41.719587, 2.932137], [41.719304, 2.932084], [41.719162, 2.93205], [41.71895, 2.932029], [41.718392, 2.932012], [41.718298, 2.932037], [41.718222, 2.931771], [41.718203, 2.931752], [41.718163, 2.931757], [41.718073, 2.931794], [41.718018, 2.931538], [41.718161, 2.931496]],
+                {}
+            );
+        
+    
+            var poly_line_562f34d6dee88baf7976ceb13be53943 = L.polyline(
+                [[41.716976, 2.933328], [41.717052, 2.933399], [41.717059, 2.933321], [41.71707, 2.933197], [41.717059, 2.933321], [41.717052, 2.933399], [41.717055, 2.933643], [41.717018, 2.933665], [41.716978, 2.933654], [41.716921, 2.933714], [41.716884, 2.933784], [41.716875, 2.933985], [41.717125, 2.934409], [41.717205, 2.934476], [41.717248, 2.934462], [41.717276, 2.934392], [41.717275, 2.934321], [41.717237, 2.93416], [41.717252, 2.934124], [41.717285, 2.934106], [41.717363, 2.934143], [41.717387, 2.934193], [41.717391, 2.934231], [41.717336, 2.93445], [41.717341, 2.934474], [41.717381, 2.934478], [41.717401, 2.93446], [41.717469, 2.934276], [41.717463, 2.934188], [41.717258, 2.933906], [41.717222, 2.933822], [41.717182, 2.933647], [41.717179, 2.933354], [41.717253, 2.933034], [41.717034, 2.932829], [41.716963, 2.932642], [41.716982, 2.932531], [41.716952, 2.932469], [41.716863, 2.932485], [41.716618, 2.932457], [41.716554, 2.932458], [41.716287, 2.932535], [41.716252, 2.932475], [41.716049, 2.932305], [41.716008, 2.932289], [41.715947, 2.932317], [41.715901, 2.932345], [41.715947, 2.932317], [41.716008, 2.932289], [41.716049, 2.932305], [41.716252, 2.932475], [41.716287, 2.932535], [41.716554, 2.932458], [41.716618, 2.932457], [41.716863, 2.932485], [41.716952, 2.932469], [41.716979, 2.932448], [41.71706, 2.932362], [41.717212, 2.932311], [41.717322, 2.932312], [41.717648, 2.932193], [41.71787, 2.932135], [41.718298, 2.932037], [41.718392, 2.932012], [41.71895, 2.932029], [41.719162, 2.93205], [41.719304, 2.932084], [41.719587, 2.932137], [41.719696, 2.932162], [41.719828, 2.932144], [41.720085, 2.93209], [41.72026, 2.932205], [41.720583, 2.932453], [41.720654, 2.932527], [41.720685, 2.932583], [41.720792, 2.932771], [41.721236, 2.9325], [41.721374, 2.93237], [41.721692, 2.932872], [41.722074, 2.93251], [41.722325, 2.93226], [41.723039, 2.931597], [41.723089, 2.93162], [41.723213, 2.93182], [41.723264, 2.931766], [41.723305, 2.931723], [41.723358, 2.931666], [41.723768, 2.932307], [41.7239, 2.932115], [41.723768, 2.932307], [41.723358, 2.931666], [41.723305, 2.931723], [41.723264, 2.931766], [41.723213, 2.93182], [41.723089, 2.93162], [41.723039, 2.931597], [41.722325, 2.93226], [41.722074, 2.93251], [41.721692, 2.932872], [41.721374, 2.93237], [41.721236, 2.9325], [41.720792, 2.932771], [41.720685, 2.932583], [41.720654, 2.932527], [41.720583, 2.932453], [41.72026, 2.932205], [41.720085, 2.93209], [41.719828, 2.932144], [41.719696, 2.932162], [41.719587, 2.932137], [41.719304, 2.932084], [41.719162, 2.93205], [41.71895, 2.932029], [41.718392, 2.932012], [41.718298, 2.932037], [41.718222, 2.931771], [41.718203, 2.931752], [41.718163, 2.931757], [41.718073, 2.931794], [41.718018, 2.931538], [41.718161, 2.931496]],
+                {"bubblingMouseEvents": true, "color": "#1f78b4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f78b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var marker_9fb6875f30493e21d0b991d7e2828027 = L.marker(
+                [41.7170004, 2.9332821],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_0bb346ceabc2b1668053d0d2aa34d19b = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#16a34a;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                1\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_72436212d6b3b69107765ae6ba577687 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83472a423006884e681ed96f8e233837 = $(`<div id="html_83472a423006884e681ed96f8e233837" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 1</b><br>             <b>Stay at CASA DEL MAR, best view in Tossa harbour</b><br>             🕒 All Day         </div>         </div>`)[0];
+                popup_72436212d6b3b69107765ae6ba577687.setContent(html_83472a423006884e681ed96f8e233837);
+            
+        
+
+        marker_9fb6875f30493e21d0b991d7e2828027.bindPopup(popup_72436212d6b3b69107765ae6ba577687)
+        ;
+
+        
+    
+    
+            marker_9fb6875f30493e21d0b991d7e2828027.bindTooltip(
+                `<div>
+                     Stay at CASA DEL MAR, best view in Tossa harbour
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9fb6875f30493e21d0b991d7e2828027.setIcon(div_icon_0bb346ceabc2b1668053d0d2aa34d19b);
+            
+    
+            var marker_825af817cca7a1d9e0e244287f8bc27c = L.marker(
+                [41.7238263, 2.9320244],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_62d70410388a4f2b8428f109524f2450 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#2563eb;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                2\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_d3e656b1e317cc2a05caaacee667c317 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_689ef99735ee1bf07162c5a4d2856f04 = $(`<div id="html_689ef99735ee1bf07162c5a4d2856f04" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 2</b><br>             <b>SuperDive Dive 1</b><br>             🕒 08:30         </div>         </div>`)[0];
+                popup_d3e656b1e317cc2a05caaacee667c317.setContent(html_689ef99735ee1bf07162c5a4d2856f04);
+            
+        
+
+        marker_825af817cca7a1d9e0e244287f8bc27c.bindPopup(popup_d3e656b1e317cc2a05caaacee667c317)
+        ;
+
+        
+    
+    
+            marker_825af817cca7a1d9e0e244287f8bc27c.bindTooltip(
+                `<div>
+                     SuperDive Dive 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_825af817cca7a1d9e0e244287f8bc27c.setIcon(div_icon_62d70410388a4f2b8428f109524f2450);
+            
+    
+            var marker_0c6e3cab51f1f533abe1c72b12a86ab0 = L.marker(
+                [41.7170757, 2.9331981],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_32d39b86c781491270de8b409cd9b119 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#2563eb;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                3\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_0e04086ff35669ead8cf6e96427a9929 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e4e086b481afbc231beb221757207fed = $(`<div id="html_e4e086b481afbc231beb221757207fed" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 3</b><br>             <b>Hike Around the Fort</b><br>             🕒 10:30         </div>         </div>`)[0];
+                popup_0e04086ff35669ead8cf6e96427a9929.setContent(html_e4e086b481afbc231beb221757207fed);
+            
+        
+
+        marker_0c6e3cab51f1f533abe1c72b12a86ab0.bindPopup(popup_0e04086ff35669ead8cf6e96427a9929)
+        ;
+
+        
+    
+    
+            marker_0c6e3cab51f1f533abe1c72b12a86ab0.bindTooltip(
+                `<div>
+                     Hike Around the Fort
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c6e3cab51f1f533abe1c72b12a86ab0.setIcon(div_icon_32d39b86c781491270de8b409cd9b119);
+            
+    
+            var marker_99f678b00fca97b7622f235f11872491 = L.marker(
+                [41.7159305, 2.9325242],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_42f40ae1057ba7c7c3359f7ab7692b40 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#2563eb;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                4\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_8a2f2d27edb6c5f20a58729ad9e50154 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e20d91b88811fdd190b60aca6feb1cc1 = $(`<div id="html_e20d91b88811fdd190b60aca6feb1cc1" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 4</b><br>             <b>Lunch + Secret Beach</b><br>             🕒 12:00         </div>         </div>`)[0];
+                popup_8a2f2d27edb6c5f20a58729ad9e50154.setContent(html_e20d91b88811fdd190b60aca6feb1cc1);
+            
+        
+
+        marker_99f678b00fca97b7622f235f11872491.bindPopup(popup_8a2f2d27edb6c5f20a58729ad9e50154)
+        ;
+
+        
+    
+    
+            marker_99f678b00fca97b7622f235f11872491.bindTooltip(
+                `<div>
+                     Lunch + Secret Beach
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99f678b00fca97b7622f235f11872491.setIcon(div_icon_42f40ae1057ba7c7c3359f7ab7692b40);
+            
+    
+            var marker_5460bde06d92e20f57b922b3bdc8d42d = L.marker(
+                [41.71710646601718, 2.933388166017178],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_c9785fd0bc81b3c9034228a8908f061c = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#2563eb;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                5\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_7516248fa60a7f31014297528a1ab503 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a4f04b850856e72a57e4d6ddd5cf3353 = $(`<div id="html_a4f04b850856e72a57e4d6ddd5cf3353" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 5</b><br>             <b>Prep for Dive 2</b><br>             🕒 15:00         </div>         </div>`)[0];
+                popup_7516248fa60a7f31014297528a1ab503.setContent(html_a4f04b850856e72a57e4d6ddd5cf3353);
+            
+        
+
+        marker_5460bde06d92e20f57b922b3bdc8d42d.bindPopup(popup_7516248fa60a7f31014297528a1ab503)
+        ;
+
+        
+    
+    
+            marker_5460bde06d92e20f57b922b3bdc8d42d.bindTooltip(
+                `<div>
+                     Prep for Dive 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5460bde06d92e20f57b922b3bdc8d42d.setIcon(div_icon_c9785fd0bc81b3c9034228a8908f061c);
+            
+    
+            var marker_528705455d5a41a02db20b146238d60a = L.marker(
+                [41.72393236601717, 2.932130466017178],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_8ef9f3902c1ac0821964fe96edf810a0 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#2563eb;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                6\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_f8e33da4b4f6657623af6c1d734d1f56 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a15207c8f3a86c006d0db5c4e4c707b0 = $(`<div id="html_a15207c8f3a86c006d0db5c4e4c707b0" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 6</b><br>             <b>SuperDive Dive 2</b><br>             🕒 16:00         </div>         </div>`)[0];
+                popup_f8e33da4b4f6657623af6c1d734d1f56.setContent(html_a15207c8f3a86c006d0db5c4e4c707b0);
+            
+        
+
+        marker_528705455d5a41a02db20b146238d60a.bindPopup(popup_f8e33da4b4f6657623af6c1d734d1f56)
+        ;
+
+        
+    
+    
+            marker_528705455d5a41a02db20b146238d60a.bindTooltip(
+                `<div>
+                     SuperDive Dive 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_528705455d5a41a02db20b146238d60a.setIcon(div_icon_8ef9f3902c1ac0821964fe96edf810a0);
+            
+    
+            var marker_1fc65a123b61400a55fb1bc39d515d22 = L.marker(
+                [41.7181497, 2.9314273],
+                {
+}
+            ).addTo(map_f45cba2367f0993ae48a0f21c2348d52);
+        
+    
+            var div_icon_06e3add05be0e269b81941f635940361 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"\n                    background:#dc2626;\n                    color:white;\n                    border-radius:50%;\n                    width:30px;\n                    height:30px;\n                    text-align:center;\n                    font-weight:bold;\n                    line-height:30px;\n                    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n                \"\u003e\n                7\n                \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_a76f7616f9a2c8c8e78a1456326ad483 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_24a5c8da001f1c33bd5e1faa6397c943 = $(`<div id="html_24a5c8da001f1c33bd5e1faa6397c943" style="width: 100.0%; height: 100.0%;">         <div style="width:220px;font-family:sans-serif">             <b>Stop 7</b><br>             <b>DInner at L'Espai</b><br>             🕒 17:30         </div>         </div>`)[0];
+                popup_a76f7616f9a2c8c8e78a1456326ad483.setContent(html_24a5c8da001f1c33bd5e1faa6397c943);
+            
+        
+
+        marker_1fc65a123b61400a55fb1bc39d515d22.bindPopup(popup_a76f7616f9a2c8c8e78a1456326ad483)
+        ;
+
+        
+    
+    
+            marker_1fc65a123b61400a55fb1bc39d515d22.bindTooltip(
+                `<div>
+                     DInner at L'Espai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1fc65a123b61400a55fb1bc39d515d22.setIcon(div_icon_06e3add05be0e269b81941f635940361);
+            
+</script>
+</html>

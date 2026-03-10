@@ -1,0 +1,24 @@
+{
+  "date": "2026-05-03",
+  "num_stops": 3,
+  "stops": [
+    {
+      "summary": "Check out",
+      "time": "08:00",
+      "lat": 41.4037672,
+      "lon": 2.1902532
+    },
+    {
+      "summary": "Park G\u00fcell",
+      "time": "09:00",
+      "lat": 41.4144948,
+      "lon": 2.1526945
+    },
+    {
+      "summary": "Transport to Cruise Port",
+      "time": "13:00",
+      "lat": 41.3602101,
+      "lon": 2.1801477
+    }
+  ]
+}

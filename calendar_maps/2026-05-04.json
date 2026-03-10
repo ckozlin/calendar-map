@@ -1,0 +1,48 @@
+{
+  "date": "2026-05-04",
+  "num_stops": 7,
+  "stops": [
+    {
+      "summary": "Breakfast + Get going",
+      "time": "07:00",
+      "lat": 43.3432609,
+      "lon": 5.3330744
+    },
+    {
+      "summary": "Get to Notre Dame De La Garde",
+      "time": "08:00",
+      "lat": 43.2839533,
+      "lon": 5.3712377
+    },
+    {
+      "summary": "Notre Dame De La Garde",
+      "time": "09:00",
+      "lat": 43.2839533,
+      "lon": 5.3712377
+    },
+    {
+      "summary": "Palais Longchamp",
+      "time": "10:30",
+      "lat": 43.30426689999999,
+      "lon": 5.3946029
+    },
+    {
+      "summary": "Lunch",
+      "time": "12:30",
+      "lat": 43.2960745,
+      "lon": 5.3739954
+    },
+    {
+      "summary": "Walk + Cathedrale",
+      "time": "13:30",
+      "lat": 43.2992976,
+      "lon": 5.364701699999999
+    },
+    {
+      "summary": "Ship departure",
+      "time": "17:00",
+      "lat": 43.3432609,
+      "lon": 5.3330744
+    }
+  ]
+}
