@@ -1,0 +1,42 @@
+{
+  "date": "2026-05-06",
+  "num_stops": 6,
+  "stops": [
+    {
+      "summary": "Breakfast + Get going",
+      "time": "07:00",
+      "lat": 43.5776629,
+      "lon": 10.3216374
+    },
+    {
+      "summary": "Pisa + Florence Tour",
+      "time": "07:45",
+      "lat": 43.722952,
+      "lon": 10.396597
+    },
+    {
+      "summary": "Uffizi",
+      "time": "17:00",
+      "lat": 43.7677856,
+      "lon": 11.2553108
+    },
+    {
+      "summary": "Dinner",
+      "time": "19:00",
+      "lat": 43.7679178,
+      "lon": 11.2523792
+    },
+    {
+      "summary": "Sunset",
+      "time": "20:00",
+      "lat": 43.7624561,
+      "lon": 11.2649304
+    },
+    {
+      "summary": "Back to ship",
+      "time": "21:30",
+      "lat": 43.5776629,
+      "lon": 10.3216374
+    }
+  ]
+}

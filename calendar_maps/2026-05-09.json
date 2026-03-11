@@ -1,0 +1,42 @@
+{
+  "date": "2026-05-09",
+  "num_stops": 6,
+  "stops": [
+    {
+      "summary": "Breakfast",
+      "time": "08:00",
+      "lat": 40.6765565,
+      "lon": 14.7675475
+    },
+    {
+      "summary": "Amalfi Coast Cruise",
+      "time": "09:30",
+      "lat": 40.6333389,
+      "lon": 14.6028963
+    },
+    {
+      "summary": "Church of St. George",
+      "time": "14:00",
+      "lat": 40.6788281,
+      "lon": 14.7591974
+    },
+    {
+      "summary": "Gelato",
+      "time": "14:30",
+      "lat": 40.6767254,
+      "lon": 14.7627614
+    },
+    {
+      "summary": "Aqueduct",
+      "time": "15:00",
+      "lat": 40.6795394,
+      "lon": 14.7649293
+    },
+    {
+      "summary": "Street Murals",
+      "time": "15:30",
+      "lat": 40.677707,
+      "lon": 14.7612748
+    }
+  ]
+}

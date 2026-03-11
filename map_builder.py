@@ -216,103 +216,110 @@ def build_map(events, date_str):
     # ---------------------------------------------------
 
     legs_js = json.dumps(leg_routes)
+    leg_dist_js = json.dumps(leg_distances)
 
     total_km = sum(leg_distances)
-    duration_seconds = min(40, max(20, total_km * 1.2))
-    total_points = sum(len(l) for l in leg_routes)
-    frame_delay = max(8, int((duration_seconds * 1000) / total_points))
+    duration_seconds = min(30, max(20, total_km * 1.2))
 
     animation_script = f"""
-<script>
+    <script>
 
-window.addEventListener("load", function() {{
+    window.addEventListener("load", function() {{
 
-    var map = {m.get_name()};
-    var legs = {legs_js};
+        var map = {m.get_name()};
+        var legs = {legs_js};
+        var legDistances = {leg_dist_js};
 
-    var marker = L.circleMarker(legs[0][0], {{
-        radius:8,
-        color:"#6b21a8",
-        fillColor:"#9333ea",
-        fillOpacity:1,
-        weight:3
-    }}).addTo(map);
+        var totalKm = legDistances.reduce((a,b)=>a+b,0);
+        var duration = {duration_seconds};
 
-    var trail = L.polyline([], {{
-        color:"#a855f7",
-        weight:4,
-        opacity:0.6
-    }}).addTo(map);
-
-    function pulseStop(pt) {{
-
-        var circle = L.circle(pt,{{
-            radius:40,
-            color:"#9333ea",
-            opacity:0.6,
-            weight:2,
-            fill:false
+        var marker = L.circleMarker(legs[0][0], {{
+            radius:8,
+            color:"#6b21a8",
+            fillColor:"#9333ea",
+            fillOpacity:1,
+            weight:3
         }}).addTo(map);
 
-        var r = 40;
+        var trail = L.polyline([], {{
+            color:"#a855f7",
+            weight:4,
+            opacity:0.6
+        }}).addTo(map);
 
-        var grow = setInterval(function(){{
-            r += 20;
-            circle.setRadius(r);
-            circle.setStyle({{opacity:0.6-(r/300)}});
+        function pulseStop(pt) {{
 
-            if(r>220){{
-                map.removeLayer(circle);
-                clearInterval(grow);
-            }}
+            var circle = L.circle(pt,{{
+                radius:40,
+                color:"#9333ea",
+                opacity:0.6,
+                weight:2,
+                fill:false
+            }}).addTo(map);
 
-        }},40);
-    }}
+            var r = 40;
 
-    var legIndex = 0;
-    var pointIndex = 0;
-    var trailCoords = [];
+            var grow = setInterval(function(){{
+                r += 20;
+                circle.setRadius(r);
+                circle.setStyle({{opacity:0.6-(r/300)}});
 
-    function step(){{
+                if(r>220){{
+                    map.removeLayer(circle);
+                    clearInterval(grow);
+                }}
 
-        var leg = legs[legIndex];
-        var pt = leg[pointIndex];
+            }},40);
+        }}
 
-        marker.setLatLng(pt);
+        var legIndex = 0;
+        var pointIndex = 0;
+        var trailCoords = [];
 
-        trailCoords.push(pt);
-        trail.setLatLngs(trailCoords);
+        function step(){{
 
-        pointIndex++;
+            var leg = legs[legIndex];
+            var pt = leg[pointIndex];
 
-        if(pointIndex >= leg.length){{
+            marker.setLatLng(pt);
 
-            pulseStop(pt);
+            trailCoords.push(pt);
+            trail.setLatLngs(trailCoords);
 
-            legIndex++;
+            pointIndex++;
 
-            if(legIndex >= legs.length){{
-                legIndex = 0;
+            if(pointIndex >= leg.length){{
+
+                pulseStop(pt);
+
+                legIndex++;
+
+                if(legIndex >= legs.length){{
+                    legIndex = 0;
+                    pointIndex = 0;
+                    trailCoords = [];
+                    trail.setLatLngs([]);
+                    setTimeout(step,1200);
+                    return;
+                }}
+
                 pointIndex = 0;
-                trailCoords = [];
-                trail.setLatLngs([]);
-                setTimeout(step,1200);
+                setTimeout(step,900);
                 return;
             }}
 
-            pointIndex = 0;
-            setTimeout(step,900);
-            return;
+            // --- NEW: consistent speed across legs ---
+            var legTime = duration * (legDistances[legIndex] / totalKm);
+            var delay = Math.max(8, (legTime * 1000) / leg.length);
+
+            setTimeout(step, delay);
         }}
 
-        setTimeout(step,{frame_delay});
-    }}
+        step();
 
-    step();
-
-}});
-</script>
-"""
+    }});
+    </script>
+    """
 
     m.get_root().html.add_child(folium.Element(animation_script))
 

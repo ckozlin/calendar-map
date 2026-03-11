@@ -6,6 +6,7 @@ import time
 import argparse
 from datetime import datetime, timedelta
 
+
 def parse_date(date_str):
     if date_str == "today":
         return datetime.today().date()
@@ -15,50 +16,82 @@ def parse_date(date_str):
 
     return datetime.strptime(date_str, "%Y-%m-%d").date()
 
+
+def build_date_list(start_date, days=None, end_date=None):
+
+    if days:
+        return [start_date + timedelta(days=i) for i in range(days)]
+
+    if end_date:
+        dates = []
+        d = start_date
+        while d <= end_date:
+            dates.append(d)
+            d += timedelta(days=1)
+        return dates
+
+    return [start_date]
+
+
 def main():
     parser = argparse.ArgumentParser()
+
     parser.add_argument("--date", default="today")
+    parser.add_argument("--end-date")
+    parser.add_argument("--days", type=int)
+
     parser.add_argument("--calendar", default="primary")
     parser.add_argument("--timezone", default="utc")
 
     args = parser.parse_args()
 
-    target_date = parse_date(args.date)
+    start_date = parse_date(args.date)
+    end_date = parse_date(args.end_date) if args.end_date else None
 
-    raw_events = get_events_for_day(target_date, args.calendar)
+    dates = build_date_list(start_date, args.days, end_date)
 
-    events = []
+    for target_date in dates:
 
-    for e in raw_events:
-        print(e["summary"], e["start"])
-        location = e.get("location")
-        start = e["start"].get("dateTime", e["start"].get("date"))
+        print(f"\nRunning {target_date}\n")
 
-        time_str = start.split("T")[1][:5] if "T" in start else "All Day"
+        raw_events = get_events_for_day(target_date, args.calendar)
 
-        if not location:
-            continue
+        events = []
 
-        coords = geocode(location)
-        time.sleep(1)
+        for e in raw_events:
 
-        print("Geocoding:", location)
-        print("Coords:", coords)
+            print(e["summary"], e["start"])
 
-        if not coords:
-            continue
+            location = e.get("location")
+            start = e["start"].get("dateTime", e["start"].get("date"))
 
-        events.append(
-            {
-                "summary": e.get("summary"),
-                "time": time_str,
-                "coords": coords
-            }
-        )
+            time_str = start.split("T")[1][:5] if "T" in start else "All Day"
 
-    build_map(events, args.date)
+            if not location:
+                continue
 
-    # webbrowser.open(f"calendar_map/calendar_map_{args.date}.html")
+            coords = geocode(location)
+            time.sleep(1)
+
+            print("Geocoding:", location)
+            print("Coords:", coords)
+
+            if not coords:
+                continue
+
+            events.append(
+                {
+                    "summary": e.get("summary"),
+                    "time": time_str,
+                    "coords": coords,
+                }
+            )
+
+        date_str = target_date.strftime("%Y-%m-%d")
+
+        build_map(events, date_str)
+
+        # webbrowser.open(f"calendar_map/calendar_map_{date_str}.html")
 
 
 if __name__ == "__main__":

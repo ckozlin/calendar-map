@@ -1,0 +1,30 @@
+{
+  "date": "2026-05-08",
+  "num_stops": 4,
+  "stops": [
+    {
+      "summary": "Breakfast",
+      "time": "07:00",
+      "lat": 38.1990464,
+      "lon": 15.5386447
+    },
+    {
+      "summary": "Etna by Jeep: Exploring Craters and Lava Caves and Etna Wines",
+      "time": "08:15",
+      "lat": 37.6944296,
+      "lon": 15.1022231
+    },
+    {
+      "summary": "Chiesa Santissima",
+      "time": "15:30",
+      "lat": 38.1912477,
+      "lon": 15.5562742
+    },
+    {
+      "summary": "Orion Fountain + Astronomical clock",
+      "time": "16:00",
+      "lat": 38.1923006,
+      "lon": 15.554294
+    }
+  ]
+}
