@@ -1,0 +1,60 @@
+{
+  "date": "2026-05-12",
+  "num_stops": 9,
+  "stops": [
+    {
+      "summary": "Colosseum Morning Tour",
+      "time": "08:15",
+      "lat": 41.8902102,
+      "lon": 12.4922309
+    },
+    {
+      "summary": "Church of Santa Maria Della Vittoria",
+      "time": "11:30",
+      "lat": 41.9046449,
+      "lon": 12.4942942
+    },
+    {
+      "summary": "Galleria Borghese",
+      "time": "13:30",
+      "lat": 41.9142103,
+      "lon": 12.4921442
+    },
+    {
+      "summary": "Villa Borghese Park",
+      "time": "15:00",
+      "lat": 41.9138782,
+      "lon": 12.4853818
+    },
+    {
+      "summary": "Santa Maria Del Popolo",
+      "time": "16:00",
+      "lat": 41.9114632,
+      "lon": 12.4762433
+    },
+    {
+      "summary": "Santa Maria Miracoli",
+      "time": "16:45",
+      "lat": 41.90998219999999,
+      "lon": 12.4764189
+    },
+    {
+      "summary": "Santa Maria Montesanto",
+      "time": "17:30",
+      "lat": 41.91006950000001,
+      "lon": 12.4768659
+    },
+    {
+      "summary": "Dinner",
+      "time": "18:00",
+      "lat": 41.9006118,
+      "lon": 12.4758356
+    },
+    {
+      "summary": "Club Derriere",
+      "time": "22:00",
+      "lat": 41.9010912,
+      "lon": 12.476201
+    }
+  ]
+}

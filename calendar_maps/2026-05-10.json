@@ -1,0 +1,72 @@
+{
+  "date": "2026-05-10",
+  "num_stops": 11,
+  "stops": [
+    {
+      "summary": "Get to Rome",
+      "time": "08:00",
+      "lat": 42.0952987,
+      "lon": 11.778079
+    },
+    {
+      "summary": "Breakfast + Spanish Steps",
+      "time": "09:00",
+      "lat": 41.90599,
+      "lon": 12.482775
+    },
+    {
+      "summary": "Drop luggage at AirBnB",
+      "time": "10:00",
+      "lat": 41.8954815,
+      "lon": 12.4793111
+    },
+    {
+      "summary": "Church of St. Ignacio",
+      "time": "10:45",
+      "lat": 41.8992528,
+      "lon": 12.4797187
+    },
+    {
+      "summary": "Piazza Navona",
+      "time": "11:45",
+      "lat": 41.8991328,
+      "lon": 12.4732921
+    },
+    {
+      "summary": "Pantheon",
+      "time": "13:45",
+      "lat": 41.8986108,
+      "lon": 12.4768729
+    },
+    {
+      "summary": "Church of SantaMaria",
+      "time": "14:30",
+      "lat": 41.8980312,
+      "lon": 12.4777993
+    },
+    {
+      "summary": "Nap time",
+      "time": "15:00",
+      "lat": 41.8954815,
+      "lon": 12.4793111
+    },
+    {
+      "summary": "Cocktails",
+      "time": "18:00",
+      "lat": 41.9028649,
+      "lon": 12.4835793
+    },
+    {
+      "summary": "Dinner",
+      "time": "19:00",
+      "lat": 41.8961556,
+      "lon": 12.4849047
+    },
+    {
+      "summary": "Trevi Fountain",
+      "time": "21:30",
+      "lat": 41.9009325,
+      "lon": 12.483313
+    }
+  ]
+}

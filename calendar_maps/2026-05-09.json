@@ -1,6 +1,6 @@
 {
   "date": "2026-05-09",
-  "num_stops": 6,
+  "num_stops": 7,
   "stops": [
     {
       "summary": "Breakfast",
@@ -37,6 +37,12 @@
       "time": "15:30",
       "lat": 40.677707,
       "lon": 14.7612748
+    },
+    {
+      "summary": "Ship Departs",
+      "time": "18:00",
+      "lat": 40.6772123,
+      "lon": 14.7516261
     }
   ]
 }

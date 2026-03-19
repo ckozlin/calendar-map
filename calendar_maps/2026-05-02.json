@@ -1,6 +1,6 @@
 {
   "date": "2026-05-02",
-  "num_stops": 7,
+  "num_stops": 8,
   "stops": [
     {
       "summary": "Stay at CASA DEL MAR, best view in Tossa harbour",
@@ -15,32 +15,38 @@
       "lon": 2.1902532
     },
     {
+      "summary": "Lunch",
+      "time": "13:00",
+      "lat": 41.4058899,
+      "lon": 2.1761859
+    },
+    {
       "summary": "La Sagrada Familia",
-      "time": "15:30",
+      "time": "14:45",
       "lat": 41.4036299,
       "lon": 2.1743558
     },
     {
-      "summary": "Casa Battl\u00f3",
-      "time": "18:00",
-      "lat": 41.3917,
-      "lon": 2.164918
-    },
-    {
       "summary": "La Pedrera",
-      "time": "19:00",
+      "time": "16:30",
       "lat": 41.3952155,
       "lon": 2.1619024
     },
     {
+      "summary": "Casa Battl\u00f3",
+      "time": "17:00",
+      "lat": 41.3917,
+      "lon": 2.164918
+    },
+    {
       "summary": "Barcelona Cathedral",
-      "time": "20:45",
+      "time": "20:00",
       "lat": 41.383962,
       "lon": 2.1761991
     },
     {
       "summary": "Bar Sincopa",
-      "time": "21:30",
+      "time": "20:15",
       "lat": 41.3804056,
       "lon": 2.1789667
     }

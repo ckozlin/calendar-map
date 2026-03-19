@@ -9,14 +9,14 @@
       "lon": 2.9332821
     },
     {
-      "summary": "SuperDive Dive 1",
-      "time": "08:30",
-      "lat": 41.7238263,
-      "lon": 2.9320244
+      "summary": "Dream Dive 1",
+      "time": "09:00",
+      "lat": 41.7207862,
+      "lon": 2.9335564
     },
     {
       "summary": "Hike Around the Fort",
-      "time": "10:30",
+      "time": "11:00",
       "lat": 41.7170757,
       "lon": 2.9331981
     },
@@ -27,22 +27,22 @@
       "lon": 2.9325242
     },
     {
-      "summary": "Prep for Dive 2",
-      "time": "15:00",
-      "lat": 41.7170004,
-      "lon": 2.9332821
-    },
-    {
-      "summary": "SuperDive Dive 2",
-      "time": "16:00",
-      "lat": 41.7238263,
-      "lon": 2.9320244
-    },
-    {
       "summary": "DInner at L'Espai",
       "time": "17:30",
       "lat": 41.7181497,
       "lon": 2.9314273
+    },
+    {
+      "summary": "Prep for Dive 2",
+      "time": "19:30",
+      "lat": 41.7170004,
+      "lon": 2.9332821
+    },
+    {
+      "summary": "Dream Dive 2 (night dive)",
+      "time": "20:00",
+      "lat": 41.7207862,
+      "lon": 2.9335564
     }
   ]
 }

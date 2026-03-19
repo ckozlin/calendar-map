@@ -1,0 +1,48 @@
+{
+  "date": "2026-05-11",
+  "num_stops": 7,
+  "stops": [
+    {
+      "summary": "Galleria doria pamphilj",
+      "time": "09:00",
+      "lat": 41.8979782,
+      "lon": 12.4815742
+    },
+    {
+      "summary": "St. John Lateran",
+      "time": "10:30",
+      "lat": 41.8858811,
+      "lon": 12.505673
+    },
+    {
+      "summary": "San Clemente",
+      "time": "11:30",
+      "lat": 41.8893347,
+      "lon": 12.4975757
+    },
+    {
+      "summary": "St. Mary Major",
+      "time": "14:00",
+      "lat": 41.89759859999999,
+      "lon": 12.4984084
+    },
+    {
+      "summary": "San Pietro Vincoli",
+      "time": "15:00",
+      "lat": 41.89379840000001,
+      "lon": 12.4931498
+    },
+    {
+      "summary": "Vatican City Tour",
+      "time": "16:15",
+      "lat": 41.9067734,
+      "lon": 12.4522914
+    },
+    {
+      "summary": "Dinner",
+      "time": "19:45",
+      "lat": 41.8908615,
+      "lon": 12.4689823
+    }
+  ]
+}
